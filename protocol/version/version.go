@@ -1,7 +1,7 @@
 package version
 
 import (
-	"VakuyProtocol/protocol"
+	"VakuyServer/protocol"
 	"github.com/pelletier/go-toml"
 )
 

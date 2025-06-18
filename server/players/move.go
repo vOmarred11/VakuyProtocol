@@ -1,52 +1,52 @@
 package players
 
 import (
-	"VakuyProtocol/pos"
+	"github.com/vOmarred11/VakuyProtocol/pos"
 )
 
-// Player is the nearest player to the client
-type Player struct {
+// Move is the defines target movement
+type Move struct {
 	// Farway is the distance sent by the server
 	Farway float32
-	// Distance is the distance received by the client and the player
+	// Distance is the distance received by the client and the target
 	Distance float32
-	// Detachment is the distance detected by the client when the player is on a combo-air only when a hit
+	// Detachment is the distance detected by the client when the target is on a combo-air only when a hit
 	// gets detected
 	Detachment float32
-	// DetachmentAir is the distance detected by the player when the client is on a combo-air only when a hit
+	// DetachmentAir is the distance detected by the target when the client is on a combo-air only when a hit
 	// gets detected
 	DetachmentAir float32
-	// Yaw is the player yaw
+	// Yaw is the target yaw
 	Yaw float32
-	// Pitch is the player pitch
+	// Pitch is the target pitch
 	Pitch float32
-	// OnGround defines is the player is on air without hit
+	// OnGround defines is the target is on air without hit
 	OnGround bool
-	// Position is the position of the player
+	// Position is the position of the target
 	Position pos.Entity
 }
 
-func (p Player) PlayerFarway() float32 {
+func (p Move) PlayerFarway() float32 {
 	return p.Farway
 }
-func (p Player) PlayerDistance() float32 {
+func (p Move) PlayerDistance() float32 {
 	return p.Distance
 }
-func (p Player) PlayerDetachment() float32 {
+func (p Move) PlayerDetachment() float32 {
 	return p.Detachment
 }
-func (p Player) PlayerDetachmentAir() float32 {
+func (p Move) PlayerDetachmentAir() float32 {
 	return p.DetachmentAir
 }
-func (p Player) PlayerYaw() float32 {
+func (p Move) PlayerYaw() float32 {
 	return p.Yaw
 }
-func (p Player) PlayerPitch() float32 {
+func (p Move) PlayerPitch() float32 {
 	return p.Pitch
 }
-func (p Player) PlayerOnGround() bool {
+func (p Move) PlayerOnGround() bool {
 	return p.OnGround
 }
-func (p Player) PlayerPosition() pos.Entity {
+func (p Move) PlayerPosition() pos.Entity {
 	return p.Position
 }

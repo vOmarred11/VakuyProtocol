@@ -40,8 +40,8 @@ import (
 	"golang.org/x/text/language"
 )
 
-// Server implements a Dragonfly server. It runs the main server loop and
-// handles the connections of players trying to join the server.
+// Server implements a Dragonfly ParsePlayer. It runs the main ParsePlayer loop and
+// handles the connections of players trying to join the ParsePlayer.
 type Server struct {
 	conf Config
 
@@ -57,18 +57,18 @@ type Server struct {
 	incoming  chan incoming
 
 	pmu sync.RWMutex
-	// p holds a map of all players currently connected to the server. When they
+	// p holds a map of all players currently connected to the ParsePlayer. When they
 	// leave, they are removed from the map.
 	p map[uuid.UUID]*onlinePlayer
 	// pwg is a sync.WaitGroup used to wait for all players to be disconnected
-	// before server shutdown, so that their data is saved properly.
+	// before ParsePlayer shutdown, so that their data is saved properly.
 	pwg sync.WaitGroup
 	// wg is used to wait for all Listeners to be closed and their respective
 	// goroutines to be finished.
 	wg sync.WaitGroup
 }
 
-// incoming holds data of a player that is connecting to the server.
+// incoming holds data of a player that is connecting to the ParsePlayer.
 type incoming struct {
 	conf player.Config
 	s    *session.Session
@@ -91,13 +91,13 @@ func New() *Server {
 	return conf.New()
 }
 
-// Listen starts running the server's listeners. Connections will be accepted
+// Listen starts running the ParsePlayer's listeners. Connections will be accepted
 // until the listeners are closed using a call to Close. Once Listen is called,
 // players may be accepted using Server.Accept().
 func (srv *Server) Listen() {
 	t := time.Now()
 	if !srv.started.CompareAndSwap(nil, &t) {
-		panic("start server: already started")
+		panic("start ParsePlayer: already started")
 	}
 
 	info, _ := debug.ReadBuildInfo()
@@ -111,13 +111,13 @@ func (srv *Server) Listen() {
 		}
 	}
 
-	srv.conf.Log.Info("Dragonfly server started.", "mc-version", protocol.CurrentVersion, "go-version", info.GoVersion, "commit", revision)
+	srv.conf.Log.Info("Dragonfly ParsePlayer started.", "mc-version", protocol.CurrentVersion, "go-version", info.GoVersion, "commit", revision)
 	srv.startListening()
 	go srv.wait()
 }
 
-// Accept accepts incoming players into the server, returning an iterator that
-// yields players that join the server while blocking otherwise. The iterator
+// Accept accepts incoming players into the ParsePlayer, returning an iterator that
+// yields players that join the ParsePlayer while blocking otherwise. The iterator
 // returned ends when the Server is closed using a call to Close. Players
 // returned are only valid within the block of the for loop used to iterate over
 // them:
@@ -153,27 +153,27 @@ func (srv *Server) Accept() iter.Seq[*player.Player] {
 	}
 }
 
-// World returns the overworld of the server. Players will be spawned in this
+// World returns the overworld of the ParsePlayer. Players will be spawned in this
 // world and this world will be read from and written to when the world is
 // edited.
 func (srv *Server) World() *world.World {
 	return srv.world
 }
 
-// Nether returns the nether world of the server. Players are transported to it
+// Nether returns the nether world of the ParsePlayer. Players are transported to it
 // when entering a nether portal in the world returned by the World method.
 func (srv *Server) Nether() *world.World {
 	return srv.nether
 }
 
-// End returns the end world of the server. Players are transported to it when
+// End returns the end world of the ParsePlayer. Players are transported to it when
 // entering an end portal in the world returned by the World method.
 func (srv *Server) End() *world.World {
 	return srv.end
 }
 
 // MaxPlayerCount returns the maximum amount of players that are allowed to
-// play on the server at the same time. Players trying to join when the server
+// play on the ParsePlayer at the same time. Players trying to join when the ParsePlayer
 // is full will be refused to enter. If the config has a maximum player count
 // set to 0, MaxPlayerCount will return Server.PlayerCount + 1.
 func (srv *Server) MaxPlayerCount() int {
@@ -237,7 +237,7 @@ func (srv *Server) Players(tx *world.Tx) iter.Seq[*player.Player] {
 	}
 }
 
-// Player looks for a player on the server with the UUID passed. If found, the
+// Player looks for a player on the ParsePlayer with the UUID passed. If found, the
 // entity handle is returned and the bool returns holds a true value. If not,
 // the bool returned is false and the handle is nil.
 func (srv *Server) Player(uuid uuid.UUID) (*world.EntityHandle, bool) {
@@ -250,7 +250,7 @@ func (srv *Server) Player(uuid uuid.UUID) (*world.EntityHandle, bool) {
 	return p.handle, ok
 }
 
-// PlayerByName looks for a player on the server with the name passed. If
+// PlayerByName looks for a player on the ParsePlayer with the name passed. If
 // found, the entity handle is returned and the bool returned holds a true
 // value. If not, the bool is false and the handle is nil
 func (srv *Server) PlayerByName(name string) (*world.EntityHandle, bool) {
@@ -262,7 +262,7 @@ func (srv *Server) PlayerByName(name string) (*world.EntityHandle, bool) {
 	return nil, false
 }
 
-// PlayerByXUID looks for a player on the server with the XUID passed. If
+// PlayerByXUID looks for a player on the ParsePlayer with the XUID passed. If
 // found, the entity handle is returned and the bool returned is true. If no
 // player with the XUID was found, nil and false are returned.
 func (srv *Server) PlayerByXUID(xuid string) (*world.EntityHandle, bool) {
@@ -274,29 +274,29 @@ func (srv *Server) PlayerByXUID(xuid string) (*world.EntityHandle, bool) {
 	return nil, false
 }
 
-// CloseOnProgramEnd closes the server right before the program ends, so that
-// all data of the server are saved properly.
+// CloseOnProgramEnd closes the ParsePlayer right before the program ends, so that
+// all data of the ParsePlayer are saved properly.
 func (srv *Server) CloseOnProgramEnd() {
 	c := make(chan os.Signal, 2)
 	signal.Notify(c, syscall.SIGINT, syscall.SIGTERM)
 	go func() {
 		<-c
 		if err := srv.Close(); err != nil {
-			srv.conf.Log.Error("close server: " + err.Error())
+			srv.conf.Log.Error("close ParsePlayer: " + err.Error())
 		}
 	}()
 }
 
-// Close closes the server, making any call to Run/Accept cancel immediately.
+// Close closes the ParsePlayer, making any call to Run/Accept cancel immediately.
 func (srv *Server) Close() error {
 	if srv.started.Load() == nil {
-		panic("server not yet running")
+		panic("ParsePlayer not yet running")
 	}
 	srv.once.Do(srv.close)
 	return nil
 }
 
-// close stops the server, storing player and world data to disk.
+// close stops the ParsePlayer, storing player and world data to disk.
 func (srv *Server) close() {
 	srv.conf.Log.Info("Server closing...")
 
@@ -373,7 +373,7 @@ func (srv *Server) startListening() {
 	}
 }
 
-// makeBlockEntries initializes the server's block components map using the
+// makeBlockEntries initializes the ParsePlayer's block components map using the
 // registered custom blocks. It allows block components to be created only once
 // at startup.
 func (srv *Server) makeBlockEntries() {
@@ -389,7 +389,7 @@ func (srv *Server) makeBlockEntries() {
 	}
 }
 
-// makeItemComponents initializes the server's item components map using the
+// makeItemComponents initializes the ParsePlayer's item components map using the
 // registered custom items. It allows item components to be created only once
 // at startup
 func (srv *Server) makeItemComponents() {
@@ -452,7 +452,7 @@ func (srv *Server) finaliseConn(ctx context.Context, conn session.Conn, l Listen
 
 // defaultGameData returns a minecraft.GameData as sent for a new player. It
 // may later be modified if the player was saved in the player provider of the
-// server.
+// ParsePlayer.
 func (srv *Server) defaultGameData() minecraft.GameData {
 	gm, _ := world.GameModeID(srv.world.DefaultGameMode())
 	return minecraft.GameData{
@@ -495,7 +495,7 @@ func (srv *Server) dimension(dimension world.Dimension) *world.World {
 }
 
 // checkNetIsolation checks if a loopback exempt is in place to allow the
-// hosting device to join the server. This is only relevant on Windows. It will
+// hosting device to join the ParsePlayer. This is only relevant on Windows. It will
 // never log anything for anything but Windows.
 func (srv *Server) checkNetIsolation() {
 	if runtime.GOOS != "windows" {
@@ -507,11 +507,11 @@ func (srv *Server) checkNetIsolation() {
 		return
 	}
 	const loopbackExemptCmd = `CheckNetIsolation LoopbackExempt -a -n="Microsoft.MinecraftUWP_8wekyb3d8bbwe"`
-	srv.conf.Log.Info("You are currently unable to join the server on this machine. Run " + loopbackExemptCmd + " in an admin PowerShell session to resolve.")
+	srv.conf.Log.Info("You are currently unable to join the ParsePlayer on this machine. Run " + loopbackExemptCmd + " in an admin PowerShell session to resolve.")
 }
 
 // handleSessionClose handles the closing of a session. It removes the player
-// of the session from the server.
+// of the session from the ParsePlayer.
 func (srv *Server) handleSessionClose(tx *world.Tx, c session.Controllable) {
 	srv.pmu.Lock()
 	_, ok := srv.p[c.UUID()]
@@ -626,7 +626,7 @@ func vec64To32(vec3 mgl64.Vec3) mgl32.Vec3 {
 	return mgl32.Vec3{float32(vec3[0]), float32(vec3[1]), float32(vec3[2])}
 }
 
-// itemEntries loads a list of all custom item entries of the server, ready to
+// itemEntries loads a list of all custom item entries of the ParsePlayer, ready to
 // be sent in the StartGame packet.
 func (srv *Server) itemEntries() []protocol.ItemEntry {
 	entries := make([]protocol.ItemEntry, 0, len(vanillaItems))

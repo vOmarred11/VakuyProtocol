@@ -7,9 +7,11 @@ type SimpleForm struct {
 	// Content is a string that will be shown right down the title
 	Content string
 	// Button is the button which will be sent
-	Button struct {
+	Buttons []struct {
 		// Text is the text of the button
 		Text string
+		// Image is the image that will be next to the text button
+		Image string
 		// Id is the id of the button
 		// DISCLAMER: if the first id is 1 and second is 2, it will show the first one so 1
 		Id int32
@@ -25,11 +27,11 @@ func (x SimpleForm) SimpleFormContent() string {
 	return x.Content
 }
 func (x SimpleForm) SimpleFormButtonText() string {
-	return x.Button.Text
+	return x.Buttons[].Text
 }
 func (x SimpleForm) SimpleFormButtonId() int32 {
-	return x.Button.Id
+	return x.Buttons[].Id
 }
 func (x SimpleForm) SimpleFormButtonInteraction() bool {
-	return x.Button.Interaction
+	return x.Buttons[].Interaction
 }

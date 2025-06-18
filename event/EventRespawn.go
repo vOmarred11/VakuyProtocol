@@ -1,7 +1,7 @@
 package event
 
 import (
-	"VakuyProtocol/player"
+	"github.com/vOmarred11/VakuyProtocol/player"
 )
 
 // RespawnEvent is when a player respawns

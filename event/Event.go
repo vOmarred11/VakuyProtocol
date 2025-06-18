@@ -1,9 +1,9 @@
 package event
 
 import (
-	"VakuyProtocol/player"
 	"crypto/md5"
 	"github.com/pelletier/go-toml"
+	"github.com/vOmarred11/VakuyProtocol/player"
 )
 
 // Event returns a value for all events

@@ -31,3 +31,6 @@ func (x Arguments) CommandArg() uint {
 func (x Arguments) CommandOptional() bool {
 	return x.Optional
 }
+func (x Arguments) CommandArgCustomList(l []string) []string {
+	return l
+}

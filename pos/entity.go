@@ -1,6 +1,6 @@
 package pos
 
-import "VakuyProtocol/entity"
+import "github.com/vOmarred11/VakuyProtocol/entity"
 
 // Entity TODO no need to explain, putting Entity to make the program happy
 // Entity ...

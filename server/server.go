@@ -1,10 +1,11 @@
 package server
 
 import (
+	"VakuyServer/player"
 	"github.com/pelletier/go-toml"
 )
 
-type server struct {
+type ParsePlayer struct {
 	incoming chan interface {
 		Data() byte
 		ParsedData() []byte
@@ -37,19 +38,19 @@ type server struct {
 	players map[struct {
 		sig byte
 	}]byte
-	nearestPlayers func(outdata byte)
+	ph func(outdata byte)
 }
 type Response struct {
 	responseMovement, responseCamera, responseInventory, responseHit byte
 }
 
-func (r server) ResponseMovement() ([]byte, []byte) {
+func (r ParsePlayer) ResponseMovement() ([]byte, []byte) {
 	b, err := toml.Marshal(r.callbackTrace.CallbackStack())
 	if err != nil {
 		panic(err)
 	}
 	s := toml.Decoder{}
-	err = s.Decode(r.nearestPlayers)
+	err = s.Decode(r.ph)
 	if err != nil {
 		panic(err)
 	}
@@ -63,13 +64,13 @@ func (r server) ResponseMovement() ([]byte, []byte) {
 	}
 	return x, e
 }
-func (r server) ResponseCamera() ([]byte, []byte) {
+func (r ParsePlayer) ResponseCamera() ([]byte, []byte) {
 	b, err := toml.Marshal(r.callbackTrace.CallbackStack())
 	if err != nil {
 		panic(err)
 	}
 	s := toml.Decoder{}
-	err = s.Decode(r.nearestPlayers)
+	err = s.Decode(r.ph)
 	if err != nil {
 		panic(err)
 	}
@@ -83,13 +84,13 @@ func (r server) ResponseCamera() ([]byte, []byte) {
 	}
 	return x, e
 }
-func (r server) ResponseHit() ([]byte, []byte) {
+func (r ParsePlayer) ResponseHit() ([]byte, []byte) {
 	b, err := toml.Marshal(r.callbackTrace.CallbackStack())
 	if err != nil {
 		panic(err)
 	}
 	s := toml.Decoder{}
-	err = s.Decode(r.nearestPlayers)
+	err = s.Decode(r.ph)
 	if err != nil {
 		panic(err)
 	}
@@ -103,13 +104,13 @@ func (r server) ResponseHit() ([]byte, []byte) {
 	}
 	return x, e
 }
-func (r server) ResponseInventory() ([]byte, []byte) {
+func (r ParsePlayer) ResponseInventory() ([]byte, []byte) {
 	b, err := toml.Marshal(r.callbackTrace.CallbackStack())
 	if err != nil {
 		panic(err)
 	}
 	s := toml.Decoder{}
-	err = s.Decode(r.nearestPlayers)
+	err = s.Decode(r.ph)
 	if err != nil {
 		panic(err)
 	}
@@ -122,4 +123,14 @@ func (r server) ResponseInventory() ([]byte, []byte) {
 		panic(err)
 	}
 	return x, e
+}
+func (r ParsePlayer) ResponseTarget() player.Config {
+	b, err := toml.Marshal(r.ph)
+	if err != nil {
+		panic(err)
+	}
+	s := toml.Decoder{}
+	s.Decode(b)
+	p := player.Player{}
+	return p.Data()
 }

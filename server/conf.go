@@ -22,7 +22,7 @@ import (
 	_ "unsafe"
 )
 
-// Config contains options for starting a Minecraft server.
+// Config contains options for starting a Minecraft ParsePlayer.
 type Config struct {
 	// Log is the Logger to use for logging information. If nil, Log is set to
 	// slog.Default(). Errors reported by the underlying network are only logged
@@ -32,15 +32,15 @@ type Config struct {
 	// for each Listener to be added to the Server. If left empty, no players
 	// will be able to connect to the Server.
 	Listeners []func(conf Config) (Listener, error)
-	// Name is the name of the server. By default, it is shown to users in the
-	// server list before joining the server and when opening the in-game menu.
+	// Name is the name of the ParsePlayer. By default, it is shown to users in the
+	// ParsePlayer list before joining the ParsePlayer and when opening the in-game menu.
 	Name string
-	// Resources is a slice of resource packs to use on the server. When joining
-	// the server, the player will then first be requested to download these
+	// Resources is a slice of resource packs to use on the ParsePlayer. When joining
+	// the ParsePlayer, the player will then first be requested to download these
 	// resource packs.
 	Resources []*resource.Pack
 	// ResourcesRequires specifies if the downloading of resource packs is
-	// required to join the server. If set to true, players will not be able to
+	// required to join the ParsePlayer. If set to true, players will not be able to
 	// join without first downloading and applying the Resources above.
 	ResourcesRequired bool
 	// DisableResourceBuilding specifies if automatic resource pack building for
@@ -48,7 +48,7 @@ type Config struct {
 	// produces a resource pack for custom items. If this is not desired (for
 	// example if a resource pack already exists), this can be set to false.
 	DisableResourceBuilding bool
-	// Allower may be used to specify what players can join the server and what
+	// Allower may be used to specify what players can join the ParsePlayer and what
 	// players cannot. By returning false in the Allow method, for example if
 	// the player has been banned, will prevent the player from joining.
 	Allower Allower
@@ -57,26 +57,26 @@ type Config struct {
 	// local games. Allowing players to join without authentication is generally
 	// a security hazard.
 	AuthDisabled bool
-	// MaxPlayers is the maximum amount of players allowed to join the server at
+	// MaxPlayers is the maximum amount of players allowed to join the ParsePlayer at
 	// once.
 	MaxPlayers int
 	// MaxChunkRadius is the maximum view distance that each player may have,
 	// measured in chunks. A chunk radius generally leads to more memory usage.
 	MaxChunkRadius int
 	// JoinMessage, QuitMessage and ShutdownMessage are the messages to send for
-	// when a player joins or quits the server and when the server shuts down,
+	// when a player joins or quits the ParsePlayer and when the ParsePlayer shuts down,
 	// kicking all online players. If set, JoinMessage and QuitMessage must have
 	// exactly 1 argument, which will be replaced with the name of the player
 	// joining or quitting.
 	// ShutdownMessage is set to chat.MessageServerDisconnect if empty.
 	JoinMessage, QuitMessage, ShutdownMessage chat.Translation
-	// StatusProvider provides the server status shown to players in the server
-	// list. By default, StatusProvider will show the server name from the Name
+	// StatusProvider provides the ParsePlayer status shown to players in the ParsePlayer
+	// list. By default, StatusProvider will show the ParsePlayer name from the Name
 	// field and the current player count and maximum players.
 	StatusProvider minecraft.ServerStatusProvider
 	// PlayerProvider is the player.Provider used for storing and loading player
 	// data. If left as nil, player data will be newly created every time a
-	// player joins the server and no data will be stored.
+	// player joins the ParsePlayer and no data will be stored.
 	PlayerProvider player.Provider
 	// WorldProvider is the world.Provider used for storing and loading world
 	// data. If left as nil, world data will be newly created every time and
@@ -175,22 +175,22 @@ func (conf Config) New() *Server {
 	return srv
 }
 
-// UserConfig is the user configuration for a Dragonfly server. It holds
-// settings that affect different aspects of the server, such as its name and
+// UserConfig is the user configuration for a Dragonfly ParsePlayer. It holds
+// settings that affect different aspects of the ParsePlayer, such as its name and
 // maximum players. UserConfig may be serialised and can be converted to a
 // Config by calling UserConfig.Config().
 type UserConfig struct {
-	// Network holds settings related to network aspects of the server.
+	// Network holds settings related to network aspects of the ParsePlayer.
 	Network struct {
-		// Address is the address on which the server should listen. Players may
+		// Address is the address on which the ParsePlayer should listen. Players may
 		// connect to this address in order to join.
 		Address string
 	}
 	Server struct {
-		// name is the name of the server as it shows up in the server list.
+		// name is the name of the ParsePlayer as it shows up in the ParsePlayer list.
 		Name string
 		// AuthEnabled controls whether players must be connected to Xbox Live
-		// in order to join the server.
+		// in order to join the ParsePlayer.
 		AuthEnabled bool
 		// DisableJoinQuitMessages specifies if default join and quit messages
 		// for players should be disabled.
@@ -198,7 +198,7 @@ type UserConfig struct {
 	}
 	World struct {
 		// SaveData controls whether a world's data will be saved and loaded.
-		// If true, the server will use the default LevelDB data provider and if
+		// If true, the ParsePlayer will use the default LevelDB data provider and if
 		// false, an empty provider will be used. To use your own provider, turn
 		// this value to false, as you will still be able to pass your own
 		// provider.
@@ -207,7 +207,7 @@ type UserConfig struct {
 		Folder string
 	}
 	Players struct {
-		// MaxCount is the maximum amount of players allowed to join the server
+		// MaxCount is the maximum amount of players allowed to join the ParsePlayer
 		// at the same time. If set to 0, the amount of maximum players will
 		// grow every time a player joins.
 		MaxCount int
@@ -216,7 +216,7 @@ type UserConfig struct {
 		// be capped and set to the max.
 		MaximumChunkRadius int
 		// SaveData controls whether a player's data will be saved and loaded.
-		// If true, the server will use the default LevelDB data provider and if
+		// If true, the ParsePlayer will use the default LevelDB data provider and if
 		// false, an empty provider will be used. To use your own provider, turn
 		// this value to false, as you will still be able to pass your own
 		// provider.
@@ -226,14 +226,14 @@ type UserConfig struct {
 		Folder string
 	}
 	Resources struct {
-		// AutoBuildPack is if the server should automatically generate a
+		// AutoBuildPack is if the ParsePlayer should automatically generate a
 		// resource pack for custom features.
 		AutoBuildPack bool
 		// Folder controls the location where resource packs will be loaded
 		// from.
 		Folder string
 		// Required is a boolean to force the client to load the resource pack
-		// on join. If they do not accept, they'll have to leave the server.
+		// on join. If they do not accept, they'll have to leave the ParsePlayer.
 		Required bool
 	}
 }
@@ -327,10 +327,10 @@ func DefaultConfig() UserConfig {
 
 // noinspection ALL
 //
-//go:linkname recipe_registerVanilla github.com/df-mc/dragonfly/server/item/recipe.registerVanilla
+//go:linkname recipe_registerVanilla github.com/df-mc/dragonfly/ParsePlayer/item/recipe.registerVanilla
 func recipe_registerVanilla()
 
 // noinspection ALL
 //
-//go:linkname world_finaliseBlockRegistry github.com/df-mc/dragonfly/server/world.finaliseBlockRegistry
+//go:linkname world_finaliseBlockRegistry github.com/df-mc/dragonfly/ParsePlayer/world.finaliseBlockRegistry
 func world_finaliseBlockRegistry()

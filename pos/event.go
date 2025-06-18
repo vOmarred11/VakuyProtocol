@@ -1,8 +1,8 @@
 package pos
 
 import (
-	"VakuyProtocol/event"
-	"VakuyProtocol/player"
+	"github.com/vOmarred11/VakuyProtocol/event"
+	"github.com/vOmarred11/VakuyProtocol/player"
 )
 
 // EventPosition returns the position on an event

@@ -2,7 +2,7 @@ package worlds
 
 import "github.com/sirupsen/logrus"
 
-type properties struct {
+type Properties struct {
 	BreakBlocks      bool
 	PlaceBlocks      bool
 	HitPlayers       bool

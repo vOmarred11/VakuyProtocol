@@ -1,6 +1,6 @@
 package event
 
-import "VakuyProtocol/player"
+import "github.com/vOmarred11/VakuyProtocol/player"
 
 // HitEvent is when a player hits any entity
 type HitEvent struct {

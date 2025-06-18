@@ -1,10 +1,11 @@
 package command
 
 type Command struct {
-	Name        string
-	Description string
-	Aliases     []string
-	Args        []Arguments
+	Name            string
+	Description     string
+	PermissionLevel int32
+	Aliases         []string
+	Args            []Arguments
 }
 
 func (x Command) CommandName() string {

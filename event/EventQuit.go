@@ -1,8 +1,8 @@
 package event
 
 import (
-	"VakuyProtocol/dimension"
-	"VakuyProtocol/player"
+	"github.com/vOmarred11/VakuyProtocol/dimension"
+	"github.com/vOmarred11/VakuyProtocol/player"
 )
 
 // QuitEvent is when a player leave the game

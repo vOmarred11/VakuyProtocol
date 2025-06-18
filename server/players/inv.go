@@ -1,11 +1,11 @@
 package players
 
 import (
-	"VakuyProtocol/inv"
-	"VakuyProtocol/stack"
+	"github.com/vOmarred11/VakuyProtocol/inv"
+	"github.com/vOmarred11/VakuyProtocol/stack"
 )
 
-// Inventory is the data of the player inventory
+// Inventory is the data of the target inventory
 type Inventory struct {
 	// Items is a slice of all items in the inventory
 	Items []stack.Item

@@ -1,11 +1,11 @@
 package worlds
 
-func getWorld(world byte) byte {
+func World(world byte) byte {
 	return world
 }
-func getWorldName(world string) string {
+func WorldName(world string) string {
 	return world
 }
-func getWorldProperties() properties {
-	return properties{}
+func WorldProperties() Properties {
+	return Properties{}
 }

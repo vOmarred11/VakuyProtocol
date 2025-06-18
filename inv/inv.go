@@ -1,7 +1,7 @@
 package inv
 
 import (
-	"VakuyProtocol/stack"
+	"github.com/vOmarred11/VakuyProtocol/stack"
 )
 
 const (

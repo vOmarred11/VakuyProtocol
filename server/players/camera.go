@@ -8,15 +8,15 @@ const (
 	ThirdPerson
 )
 
-// Camera is the player camera view
+// Camera is the target camera view
 type Camera struct {
 	// Angle is the 360° angle of the camera
 	Angle mgl32.Vec3
-	// Person defines what person is player on
+	// Person defines what person is target on
 	Person uint8
-	// Where defines where the player is looking at
+	// Where defines where the target is looking at
 	Where float32
-	// LookingAtPlayer defines if the player is looking at the client
+	// LookingAtPlayer defines if the target is looking at the client
 	LookingAtPlayer bool
 }
 

@@ -1,8 +1,8 @@
 package event
 
 import (
-	"VakuyProtocol/event"
-	"VakuyProtocol/player"
+	"github.com/vOmarred11/VakuyProtocol/event"
+	"github.com/vOmarred11/VakuyProtocol/player"
 )
 
 type Event struct {

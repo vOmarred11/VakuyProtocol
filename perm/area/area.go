@@ -1,8 +1,8 @@
 package area
 
 import (
-	"VakuyProtocol/player"
-	"VakuyProtocol/pos"
+	"github.com/vOmarred11/VakuyProtocol/player"
+	"github.com/vOmarred11/VakuyProtocol/pos"
 )
 
 type Area struct {

@@ -1,6 +1,6 @@
 package event
 
-import "VakuyProtocol/player"
+import "github.com/vOmarred11/VakuyProtocol/player"
 
 // ChatEvent when a player is chatting
 type ChatEvent struct {

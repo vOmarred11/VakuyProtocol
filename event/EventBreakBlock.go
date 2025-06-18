@@ -1,8 +1,8 @@
 package event
 
 import (
-	"VakuyProtocol/player"
 	"github.com/sandertv/gophertunnel/minecraft/protocol"
+	"github.com/vOmarred11/VakuyProtocol/player"
 )
 
 // BreakBlockEvent is when a player breaks a block
