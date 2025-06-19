@@ -1,6 +1,8 @@
 package particle
 
-import "github.com/vOmarred11/VakuyProtocol/pos"
+import (
+	"github.com/vOmarred11/VakuyProtocol/pos"
+)
 
 const (
 	CauseEffect = iota
@@ -14,7 +16,7 @@ type Particle struct {
 	// Intensity is the release intensity
 	Intensity int32
 	// Position is the floating entity position
-	Position pos.Objective
+	Position pos.Entity
 }
 
 func (p Particle) ParticleCause() uint8 {
@@ -23,6 +25,6 @@ func (p Particle) ParticleCause() uint8 {
 func (p Particle) ParticleIntensity() int32 {
 	return p.Intensity
 }
-func (p Particle) ParticlePosition() pos.Objective {
+func (p Particle) ParticlePosition() pos.Entity {
 	return p.Position
 }

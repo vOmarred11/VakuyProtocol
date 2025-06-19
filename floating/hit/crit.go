@@ -8,12 +8,12 @@ type ParticleCriticalHit struct {
 	// Since this packet cannot be or rarely gets sent where are not calculating the intensity but the number
 	Count int32
 	// Position the position of each floating entity
-	Position pos.Objective
+	Position pos.Entity
 }
 
 func (p ParticleCriticalHit) ParticleCriticalHitCount() int32 {
 	return p.Count
 }
-func (p ParticleCriticalHit) ParticleCriticalHitPosition() pos.Objective {
+func (p ParticleCriticalHit) ParticleCriticalHitPosition() pos.Entity {
 	return p.Position
 }
