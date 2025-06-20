@@ -1,9 +1,9 @@
 package delorian
 
 import (
-	"VakuyProtocol/protocol"
-	vakuy "VakuyProtocol/server"
 	"github.com/pelletier/go-toml"
+	"github.com/vOmarred11/VakuyProtocol/protocol"
+	vakuy "github.com/vOmarred11/VakuyProtocol/server"
 	"os"
 )
 
@@ -33,16 +33,32 @@ func ServerConnection(p protocol.Proto) {
 	if err != nil {
 		panic(err)
 	}
+	defer func() {
+		x, err := p.ReadByte()
+		if err != nil {
+			panic(err)
+		}
+		err = p.WriteByte(x)
+		if err != nil {
+			panic(err)
+		}
+	}()
 	go func() {
 		defer func() {
-			srv.Close()
+			err := srv.Close()
+			if err != nil {
+				panic(err)
+			}
 		}()
 		for player := range srv.Accept() {
 			value, err := p.SendValue(player.Tx())
 			if err != nil {
 				return
 			}
-			p.ReceiveValue(value)
+			err = p.ReceiveValue(value)
+			if err != nil {
+				panic(err)
+			}
 		}
 	}()
 }
@@ -51,6 +67,9 @@ func ReadServerConfig() ServerConfig {
 	if err != nil {
 		panic(err)
 	}
-	os.WriteFile("server.toml", b, 0777)
+	err = os.WriteFile("server.toml", b, 0777)
+	if err != nil {
+		panic(err)
+	}
 	return ServerConfig{}
 }

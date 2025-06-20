@@ -26,3 +26,15 @@ func (c Chat) ChatDisplay() string {
 	c.Display = fmt.Sprintf("<%s> %s", e.Name, e.Message)
 	return c.Display
 }
+func (c Chat) ChatFromServer() bool {
+	return c.FromServer
+}
+func (e Entity) EntityName() string {
+	return e.Name
+}
+func (e Entity) EntityMessage() string {
+	return e.Message
+}
+func (e Entity) EntityMessageId() int32 {
+	return e.MessageId
+}

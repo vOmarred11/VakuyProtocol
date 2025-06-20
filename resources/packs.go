@@ -4,9 +4,7 @@ import (
 	"github.com/sandertv/gophertunnel/minecraft/resource"
 )
 
-type ResourcePack struct {
-	string
-}
+type ResourcePack struct { string }
 
 func DownloadCache() string {
 	return "delorian/packs"

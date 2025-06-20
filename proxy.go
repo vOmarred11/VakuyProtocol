@@ -1,10 +1,11 @@
 package delorian
 
 import (
-	"VakuyProtocol/minecraft"
-	vakuy "VakuyProtocol/protocol"
+	"errors"
 	"fmt"
 	"github.com/pelletier/go-toml"
+	"github.com/vOmarred11/VakuyProtocol/minecraft"
+	vakuy "github.com/vOmarred11/VakuyProtocol/protocol"
 	"os"
 	"time"
 )
@@ -23,7 +24,10 @@ func proxy() {
 	if err != nil {
 		panic(err)
 	}
-	if listener.Close(); err != nil {
+	if errors.Is(err, listener.Close()) {
+		panic(errors.New("connection closed"))
+	}
+	if err != nil {
 		panic(err)
 	}
 	go ProxyConnection(minecraft.Dialer{}, ProxyConfig{}, listener, vakuy.Proto{})
@@ -47,7 +51,10 @@ func ProxyConnection(dialer minecraft.Dialer, cfg ProxyConfig, listener *minecra
 	}()
 	go func() {
 		defer func() {
-			listener.Disconnect(conn, "disconnected")
+			err := listener.Disconnect(conn, "disconnected")
+			if err != nil {
+				panic(err)
+			}
 			fmt.Println("disconnected")
 		}()
 		pk, err := conn.ReadPacket()
@@ -61,7 +68,10 @@ func ProxyConnection(dialer minecraft.Dialer, cfg ProxyConfig, listener *minecra
 	}()
 	go func() {
 		defer func() {
-			listener.Disconnect(conn, "disconnected")
+			err := listener.Disconnect(conn, "disconnected")
+			if err != nil {
+				panic(err)
+			}
 		}()
 		pk, err := conn.ReadPacket()
 		if err != nil {
@@ -82,6 +92,9 @@ func ReadProxyConfig() ProxyConfig {
 	if err != nil {
 		panic(err)
 	}
-	os.WriteFile("proxy.toml", b, 0777)
+	err = os.WriteFile("proxy.toml", b, 0777)
+	if err != nil {
+		panic(err)
+	}
 	return ProxyConfig{}
 }
