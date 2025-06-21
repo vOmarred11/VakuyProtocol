@@ -30,7 +30,7 @@ func proxy() {
 	if err != nil {
 		panic(err)
 	}
-	go ProxyConnection(minecraft.Dialer{}, ProxyConfig{}, listener, vakuy.Proto{})
+	go ProxyConnection(minecraft.Dialer{}, cfg, listener, vakuy.Proto{})
 
 }
 func ProxyConnection(dialer minecraft.Dialer, cfg ProxyConfig, listener *minecraft.Listener, p vakuy.Proto) {
