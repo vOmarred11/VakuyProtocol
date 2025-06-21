@@ -1,8 +1,8 @@
 package entity
 
 import (
-	"VakuyProtocol/pos"
 	"github.com/df-mc/dragonfly/server/world"
+	"github.com/vOmarred11/VakuyProtocol/pos"
 )
 
 // Type is the entity type
