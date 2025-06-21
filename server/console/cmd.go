@@ -2,7 +2,6 @@ package console
 
 import (
 	"fmt"
-	"github.com/df-mc/dragonfly/server/cmd"
 	"github.com/vOmarred11/VakuyProtocol/command"
 )
 
@@ -17,7 +16,7 @@ type Command struct {
 	// Arguments is a slice of all arguments of every command
 	Arguments []command.Arguments
 	// Output is the action that will get taken
-	Output cmd.Output
+	Output command.Output
 }
 
 func (c *Command) CommandConsoleLine() string {
@@ -32,7 +31,7 @@ func (c *Command) CommandCommands() []command.Command {
 func (c *Command) CommandArguments() []command.Arguments {
 	return c.Arguments
 }
-func (c *Command) CommandOutput() cmd.Output {
+func (c *Command) CommandOutput() command.Output {
 	fmt.Sprintf("%s | %s", c.ConsoleLine, c.ConsoleOutput)
 	return c.Output
 }
