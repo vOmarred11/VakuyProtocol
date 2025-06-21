@@ -1,11 +1,17 @@
 package command
 
+// Command is a message that you can execute in chat with the / to execute actions
 type Command struct {
-	Name            string
-	Description     string
+	// Name is the name of the command
+	Name string
+	// Description is the description that will appear
+	Description string
+	// PermissionLevel defines who can execute that command
 	PermissionLevel int32
-	Aliases         []string
-	Args            []Arguments
+	// Aliases is a slice of all connections between the command
+	Aliases []string
+	// Args is a slice of all command arguments
+	Args []Arguments
 }
 
 func (x Command) CommandName() string {

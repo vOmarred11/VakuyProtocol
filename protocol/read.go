@@ -6,6 +6,7 @@ func (p *Proto) String() string {
 func (p *Proto) Byte() byte {
 	return p.Bytes[1]
 }
+func (p *Proto) LenByte() int { return int(p.Bytes[1]) }
 func (p *Proto) Int() int {
 	return int(p.Amount)
 }

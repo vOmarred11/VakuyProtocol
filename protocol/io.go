@@ -55,7 +55,7 @@ func (p *Proto) WriteByte(b byte) error {
 	p.Bytes = append(p.Bytes, b)
 	return err
 }
-func (p *Proto) ReadByte() (byte, error) {
+func (p *Proto) ReadByte(b byte) (byte, error) {
 	if len(p.Bytes) == 0 {
 		panic("empty byte slice reading: bytes should be non-zero")
 	}
@@ -63,8 +63,9 @@ func (p *Proto) ReadByte() (byte, error) {
 	if err != nil {
 		panic(err)
 	}
-	b := p.Bytes[p.Amount]
-	return b, err
+	v := p.Bytes[p.Amount]
+	b = v
+	return v, err
 }
 func (p *Proto) SendValue(v any) (any, error) {
 	if v == "" {

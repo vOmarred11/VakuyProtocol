@@ -5,6 +5,8 @@ var BadWords []string
 
 // Restriction restricts all bad words censuring them
 type Restriction struct {
+	// Enabled defines if it should restrict bad words
+	Enabled bool
 	// ErrorMessage is the message that will be shown when someone will type a bad word
 	ErrorMessage string
 	// Message is the message containing bad words
@@ -13,6 +15,7 @@ type Restriction struct {
 	Level byte
 }
 
+func (r Restriction) RestrictionEnabled() bool { return r.Enabled }
 func (r Restriction) RestrictionErrorMessage() string {
 	return r.ErrorMessage
 }

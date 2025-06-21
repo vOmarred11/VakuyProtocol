@@ -24,6 +24,9 @@ type Entity struct {
 func (c Chat) ChatDisplay() string {
 	e := Entity{}
 	c.Display = fmt.Sprintf("<%s> %s", e.Name, e.Message)
+	if c.FromServer == true {
+		c.Display = fmt.Sprintf("[SERVER] %s", e.Message)
+	}
 	return c.Display
 }
 func (c Chat) ChatFromServer() bool {
