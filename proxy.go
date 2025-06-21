@@ -6,8 +6,8 @@ import (
 	"github.com/pelletier/go-toml"
 	"github.com/vOmarred11/VakuyProtocol/minecraft"
 	vakuy "github.com/vOmarred11/VakuyProtocol/protocol"
+	"github.com/vOmarred11/VakuyProtocol/server/timeout"
 	"os"
-	"time"
 )
 
 type ProxyConfig struct {
@@ -30,11 +30,11 @@ func proxy() {
 	if err != nil {
 		panic(err)
 	}
-	go ProxyConnection(minecraft.Dialer{}, cfg, listener, vakuy.Proto{})
+	go ProxyConnection(minecraft.Dialer{}, cfg, listener, vakuy.Proto{}, timeout.Time{})
 
 }
-func ProxyConnection(dialer minecraft.Dialer, cfg ProxyConfig, listener *minecraft.Listener, p vakuy.Proto) {
-	conn, err := dialer.DialTimeout("raknet", cfg.Connection.RemoteAddress, time.Second*10)
+func ProxyConnection(dialer minecraft.Dialer, cfg ProxyConfig, listener *minecraft.Listener, p vakuy.Proto, t timeout.Time) {
+	conn, err := dialer.DialTimeout("raknet", cfg.Connection.RemoteAddress, t.Stamp)
 	if err != nil {
 		panic(err)
 	}
