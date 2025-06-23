@@ -1,4 +1,4 @@
-package delorian
+package main
 
 import (
 	"errors"

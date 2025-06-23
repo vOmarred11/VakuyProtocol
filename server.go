@@ -1,4 +1,4 @@
-package delorian
+package main
 
 import (
 	"github.com/pelletier/go-toml"
@@ -26,6 +26,7 @@ func server() {
 }
 func ServerConnection(p protocol.Proto) {
 	b, err := p.SendValue(vakuy.Response{})
+	h, err := toml.Marshal(b)
 	if err != nil {
 		panic(err)
 	}
@@ -34,11 +35,11 @@ func ServerConnection(p protocol.Proto) {
 		panic(err)
 	}
 	defer func() {
-		x, err := p.ReadByte()
+		x, err := p.Read(h)
 		if err != nil {
 			panic(err)
 		}
-		err = p.WriteByte(x)
+		err = p.WriteByte(byte(x))
 		if err != nil {
 			panic(err)
 		}
