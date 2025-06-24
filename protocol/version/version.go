@@ -1,8 +1,8 @@
 package version
 
 import (
-	"VakuyServer/protocol"
 	"github.com/pelletier/go-toml"
+	"github.com/vOmarred11/VakuyProtocol/protocol"
 )
 
 // Data is a marshalled version of the proxy protocol
