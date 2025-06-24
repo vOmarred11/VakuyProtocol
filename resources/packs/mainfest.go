@@ -12,21 +12,21 @@ type packVersion struct{ int }
 
 type packFormat struct{ int }
 
-func getMainfestName(pc packName) string {
+func MainfestName(pc packName) string {
 	return pc.string
 }
-func getMainfestDescription(pc packDescription) string {
+func MainfestDescription(pc packDescription) string {
 	return pc.string
 }
-func getMainfestAuthor(pc packAuthor) string {
+func MainfestAuthor(pc packAuthor) string {
 	return pc.string
 }
-func getMainfestVersion(pc packVersion) int {
+func MainfestVersion(pc packVersion) int {
 	return pc.int
 }
-func getMainfestUUID() uuid.UUID {
+func MainfestUUID() uuid.UUID {
 	return uuid.UUID{}
 }
-func getMainfestFormat(pc packFormat) int {
+func MainfestFormat(pc packFormat) int {
 	return pc.int
 }
