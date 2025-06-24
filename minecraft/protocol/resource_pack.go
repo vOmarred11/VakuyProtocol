@@ -8,7 +8,7 @@ type TexturePackInfo struct {
 	// UUID is the UUID of the texture pack. Each texture pack downloaded must have a different UUID in
 	// order for the client to be able to handle them properly.
 	UUID uuid.UUID
-	// Version is the version of the texture pack. The client will cache texture packs sent by the server as
+	// Version is the version of the texture pack. The client will cache texture pack sent by the server as
 	// long as they carry the same version. Sending a texture pack with a different version than previously
 	// will force the client to re-download it.
 	Version string
@@ -16,14 +16,14 @@ type TexturePackInfo struct {
 	// archive (zip) of the texture pack.
 	Size uint64
 	// ContentKey is the key used to decrypt the behaviour pack if it is encrypted. This is generally the case
-	// for marketplace texture packs.
+	// for marketplace texture pack.
 	ContentKey string
 	// SubPackName ...
 	SubPackName string
 	// ContentIdentity is another UUID for the resource pack, and is generally set for marketplace texture
-	// packs. It is also required for client-side validations when the resource pack is encrypted.
+	// pack. It is also required for client-side validations when the resource pack is encrypted.
 	ContentIdentity string
-	// HasScripts specifies if the texture packs has any scripts in it. A client will only download the
+	// HasScripts specifies if the texture pack has any scripts in it. A client will only download the
 	// behaviour pack if it supports scripts, which, up to 1.11, only includes Windows 10.
 	HasScripts bool
 	// AddonPack specifies if the texture pack is from an addon.
@@ -55,7 +55,7 @@ type StackResourcePack struct {
 	// UUID is the UUID of the resource pack. Each resource pack downloaded must have a different UUID in
 	// order for the client to be able to handle them properly.
 	UUID string
-	// Version is the version of the resource pack. The client will cache resource packs sent by the server as
+	// Version is the version of the resource pack. The client will cache resource pack sent by the server as
 	// long as they carry the same version. Sending a resource pack with a different version than previously
 	// will force the client to re-download it.
 	Version string

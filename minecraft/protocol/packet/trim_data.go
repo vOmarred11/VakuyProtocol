@@ -8,7 +8,7 @@ import (
 // and materials that can be applied via armour trims.
 type TrimData struct {
 	// Patterns is a list of patterns that can be applied to armour. Each pattern has its own style and texture that is
-	// defined through resource packs.
+	// defined through resource pack.
 	Patterns []protocol.TrimPattern
 	// Materials is a list of materials that can be applied to armour. These are mostly different ores that have different
 	// colours for more customization.

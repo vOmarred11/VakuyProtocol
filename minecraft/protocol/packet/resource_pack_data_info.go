@@ -17,7 +17,7 @@ const (
 )
 
 // ResourcePackDataInfo is sent by the server to the client to inform the client about the data contained in
-// one of the resource packs that are about to be sent.
+// one of the resource pack that are about to be sent.
 type ResourcePackDataInfo struct {
 	// UUID is the unique ID of the resource pack that the info concerns.
 	UUID string

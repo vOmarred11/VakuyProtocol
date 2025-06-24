@@ -27,14 +27,14 @@ import (
 	"time"
 )
 
-// exemptedResourcePack is a resource pack that is exempted from being downloaded. These packs may be directly
+// exemptedResourcePack is a resource pack that is exempted from being downloaded. These pack may be directly
 // applied by sending them in the ResourcePackStack packet.
 type exemptedResourcePack struct {
 	uuid    string
 	version string
 }
 
-// exemptedPacks is a list of all resource packs that do not need to be downloaded, but may always be applied
+// exemptedPacks is a list of all resource pack that do not need to be downloaded, but may always be applied
 // in the ResourcePackStack packet.
 var exemptedPacks = []exemptedResourcePack{
 	{
@@ -114,8 +114,8 @@ type Conn struct {
 	expectedIDs atomic.Value
 
 	packMu sync.Mutex
-	// resourcePacks is a slice of resource packs that the listener may hold. Each client will be asked to
-	// download these resource packs upon joining.
+	// resourcePacks is a slice of resource pack that the listener may hold. Each client will be asked to
+	// download these resource pack upon joining.
 	resourcePacks []*resource.Pack
 	// texturePacksRequired specifies if clients that join must accept the texture pack in order for them to
 	// be able to join the server. If they don't accept, they can only leave the server.
@@ -124,7 +124,7 @@ type Conn struct {
 	// downloadResourcePack is an optional function passed to a Dial() call. If set, each resource pack received
 	// from the server will call this function to see if it should be downloaded or not.
 	downloadResourcePack func(id uuid.UUID, version string, currentPack, totalPacks int) bool
-	// ignoredResourcePacks is a slice of resource packs that are not being downloaded due to the downloadResourcePack
+	// ignoredResourcePacks is a slice of resource pack that are not being downloaded due to the downloadResourcePack
 	// func returning false for the specific pack.
 	ignoredResourcePacks []exemptedResourcePack
 
@@ -391,9 +391,9 @@ func (conn *Conn) ReadPacket() (pk packet.Packet, err error) {
 	}
 }
 
-// ResourcePacks returns a slice of all resource packs the connection holds. For a Conn obtained using a
-// Listener, this holds all resource packs set to the Listener. For a Conn obtained using Dial, the resource
-// packs include all packs sent by the server connected to.
+// ResourcePacks returns a slice of all resource pack the connection holds. For a Conn obtained using a
+// Listener, this holds all resource pack set to the Listener. For a Conn obtained using Dial, the resource
+// pack include all pack sent by the server connected to.
 func (conn *Conn) ResourcePacks() []*resource.Pack {
 	return conn.resourcePacks
 }
@@ -841,7 +841,7 @@ func (conn *Conn) handleClientCacheStatus(pk *packet.ClientCacheStatus) error {
 }
 
 // handleResourcePacksInfo handles a ResourcePacksInfo packet sent by the server. The client responds by
-// sending the packs it needs downloaded.
+// sending the pack it needs downloaded.
 func (conn *Conn) handleResourcePacksInfo(pk *packet.ResourcePacksInfo) error {
 	// First create a new resource pack queue with the information in the packet so we can download them
 	// properly later.
@@ -893,9 +893,9 @@ func (conn *Conn) handleResourcePacksInfo(pk *packet.ResourcePacksInfo) error {
 }
 
 // handleResourcePackStack handles a ResourcePackStack packet sent by the server. The stack defines the order
-// that resource packs are applied in.
+// that resource pack are applied in.
 func (conn *Conn) handleResourcePackStack(pk *packet.ResourcePackStack) error {
-	// We currently don't apply resource packs in any way, so instead we just check if all resource packs in
+	// We currently don't apply resource pack in any way, so instead we just check if all resource pack in
 	// the stacks are also downloaded.
 	for _, pack := range pk.TexturePacks {
 		for i, behaviourPack := range pk.BehaviourPacks {
@@ -961,7 +961,7 @@ func (conn *Conn) handleResourcePackClientResponse(pk *packet.ResourcePackClient
 		packs := pk.PacksToDownload
 		conn.packQueue = &resourcePackQueue{packs: conn.resourcePacks}
 		if err := conn.packQueue.Request(packs); err != nil {
-			return fmt.Errorf("lookup resource packs by UUID: %w", err)
+			return fmt.Errorf("lookup resource pack by UUID: %w", err)
 		}
 		// Proceed with the first resource pack download. We run all downloads in sequence rather than in
 		// parallel, as it's less prone to packet loss.
@@ -972,7 +972,7 @@ func (conn *Conn) handleResourcePackClientResponse(pk *packet.ResourcePackClient
 		pk := &packet.ResourcePackStack{BaseGameVersion: protocol.CurrentVersion, Experiments: []protocol.ExperimentData{{Name: "cameras", Enabled: true}}}
 		for _, pack := range conn.resourcePacks {
 			resourcePack := protocol.StackResourcePack{UUID: pack.UUID().String(), Version: pack.Version()}
-			// If it has behaviours, add it to the behaviour pack list. If not, we add it to the texture packs
+			// If it has behaviours, add it to the behaviour pack list. If not, we add it to the texture pack
 			// list.
 			if pack.HasBehaviours() {
 				pk.BehaviourPacks = append(pk.BehaviourPacks, resourcePack)
@@ -1050,7 +1050,7 @@ func (conn *Conn) startGame() {
 func (conn *Conn) nextResourcePackDownload() error {
 	pk, ok := conn.packQueue.NextPack()
 	if !ok {
-		return fmt.Errorf("no resource packs to download")
+		return fmt.Errorf("no resource pack to download")
 	}
 	if err := conn.WritePacket(pk); err != nil {
 		return fmt.Errorf("send ResourcePackDataInfo: %w", err)
@@ -1078,7 +1078,7 @@ func (conn *Conn) handleResourcePackDataInfo(pk *packet.ResourcePackDataInfo) er
 		pack.size = pk.Size
 	}
 
-	// Remove the resource pack from the downloading packs and add it to the awaiting packets.
+	// Remove the resource pack from the downloading pack and add it to the awaiting packets.
 	delete(conn.packQueue.downloadingPacks, id)
 	conn.packQueue.awaitingPacks[id] = &pack
 
@@ -1120,7 +1120,7 @@ func (conn *Conn) handleResourcePackDataInfo(pk *packet.ResourcePackDataInfo) er
 			return
 		}
 		conn.packQueue.packAmount--
-		// Finally we add the resource to the resource packs slice.
+		// Finally we add the resource to the resource pack slice.
 		conn.resourcePacks = append(conn.resourcePacks, newPack.WithContentKey(pack.contentKey))
 		if conn.packQueue.packAmount == 0 {
 			conn.expect(packet.IDResourcePackStack)

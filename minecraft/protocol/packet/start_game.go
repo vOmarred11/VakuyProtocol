@@ -54,10 +54,10 @@ type StartGame struct {
 	// here.
 	WorldSeed int64
 	// SpawnBiomeType specifies if the biome that the player spawns in is user defined (through behaviour
-	// packs) or builtin. See the constants above.
+	// pack) or builtin. See the constants above.
 	SpawnBiomeType int16
 	// UserDefinedBiomeName is a readable name of the biome that the player spawned in, such as 'plains'. This
-	// might be a custom biome name if any custom biomes are present through behaviour packs.
+	// might be a custom biome name if any custom biomes are present through behaviour pack.
 	UserDefinedBiomeName string
 	// Dimension is the ID of the dimension that the player spawns in. It is a value from 0-2, with 0 being
 	// the overworld, 1 being the nether and 2 being the end.

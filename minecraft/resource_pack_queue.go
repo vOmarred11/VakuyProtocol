@@ -30,7 +30,7 @@ type downloadingPack struct {
 	contentKey    string
 }
 
-// Request 'requests' all resource packs passed, provided they all exist in the resourcePackQueue. If not,
+// Request 'requests' all resource pack passed, provided they all exist in the resourcePackQueue. If not,
 // an error is returned.
 func (queue *resourcePackQueue) Request(packs []string) error {
 	queue.packsToDownload = make(map[string]*resource.Pack)
@@ -54,7 +54,7 @@ func (queue *resourcePackQueue) Request(packs []string) error {
 }
 
 // NextPack assigns the next resource pack to the current pack and returns true if successful. If there were
-// no more packs to assign, false is returned. If ok is true, a packet with data info is returned.
+// no more pack to assign, false is returned. If ok is true, a packet with data info is returned.
 func (queue *resourcePackQueue) NextPack() (pk *packet.ResourcePackDataInfo, ok bool) {
 	for index, pack := range queue.packsToDownload {
 		delete(queue.packsToDownload, index)
@@ -88,7 +88,7 @@ func (queue *resourcePackQueue) NextPack() (pk *packet.ResourcePackDataInfo, ok 
 	return nil, false
 }
 
-// AllDownloaded checks if all resource packs in the queue are downloaded.
+// AllDownloaded checks if all resource pack in the queue are downloaded.
 func (queue *resourcePackQueue) AllDownloaded() bool {
 	return len(queue.packsToDownload) == 0
 }

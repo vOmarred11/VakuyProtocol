@@ -1,4 +1,4 @@
-package packs
+package pack
 
 type PackName struct{ string }
 

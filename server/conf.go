@@ -35,11 +35,11 @@ type Config struct {
 	// Name is the name of the ParsePlayer. By default, it is shown to users in the
 	// ParsePlayer list before joining the ParsePlayer and when opening the in-game menu.
 	Name string
-	// Resources is a slice of resource packs to use on the ParsePlayer. When joining
+	// Resources is a slice of resource pack to use on the ParsePlayer. When joining
 	// the ParsePlayer, the player will then first be requested to download these
-	// resource packs.
+	// resource pack.
 	Resources []*resource.Pack
-	// ResourcesRequires specifies if the downloading of resource packs is
+	// ResourcesRequires specifies if the downloading of resource pack is
 	// required to join the ParsePlayer. If set to true, players will not be able to
 	// join without first downloading and applying the Resources above.
 	ResourcesRequired bool
@@ -229,7 +229,7 @@ type UserConfig struct {
 		// AutoBuildPack is if the ParsePlayer should automatically generate a
 		// resource pack for custom features.
 		AutoBuildPack bool
-		// Folder controls the location where resource packs will be loaded
+		// Folder controls the location where resource pack will be loaded
 		// from.
 		Folder string
 		// Required is a boolean to force the client to load the resource pack
@@ -275,7 +275,7 @@ func (uc UserConfig) Config(log *slog.Logger) (Config, error) {
 	return conf, nil
 }
 
-// loadResources loads all resource packs found in a directory passed.
+// loadResources loads all resource pack found in a directory passed.
 func loadResources(dir string) ([]*resource.Pack, error) {
 	_ = os.MkdirAll(dir, 0777)
 

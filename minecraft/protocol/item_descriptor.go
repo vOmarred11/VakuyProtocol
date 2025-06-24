@@ -49,7 +49,7 @@ func (x *DefaultItemDescriptor) Marshal(r IO) {
 	}
 }
 
-// MoLangItemDescriptor represents an item descriptor for items that use MoLang (e.g. behaviour packs).
+// MoLangItemDescriptor represents an item descriptor for items that use MoLang (e.g. behaviour pack).
 type MoLangItemDescriptor struct {
 	// Expression represents the MoLang expression used to identify the item/it's associated tag.
 	Expression string

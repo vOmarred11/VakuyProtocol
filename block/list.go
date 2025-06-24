@@ -1,284 +1,858 @@
 package block
 
 const (
-	Air = iota
-	Stone
-	Grass
-	Dirt
-	Cobblestone
-	WoodPlanks
-	Bedrock
-	Water
-	Lava
-	Sand
-	Gravel
-	GoldOre
-	IronOre
-	CoalOre
-	DiamondOre
-	RedstoneOre
-	LapisOre
-	EmeraldOre
-	QuartzOre
-	NetherQuartzOre
-	Furnace
-	CraftingTable
-	Chest
-	Door
-	Torch
-	Glass
-	Bookshelf
-	Obsidian
-	Netherrack
-	SoulSand
-	Glowstone
-	StoneBrick
-	NetherBrick
-	EndStone
-	PurpurBlock
-	ChorusPlant
-	EndRod
-	ShulkerBox
-	Concrete
-	Terracotta
-	StrippedWood
-	Barrel
-	Smoker
-	BlastFurnace
-	CartographyTable
-	FletchingTable
-	Grindstone
-	Lectern
-	Loom
-	SmithingTable
-	Stonecutter
-	Bell
-	Campfire
-	Lantern
-	SweetBerryBush
-	HoneycombBlock
-	Beehive
-	Target
-	CryingObsidian
-	RespawnAnchor
-	AncientDebris
-	NetheriteBlock
-	Basalt
-	PolishedBasalt
-	Blackstone
-	PolishedBlackstone
-	PolishedBlackstoneBricks
-	CrackedPolishedBlackstoneBricks
-	ChiseledPolishedBlackstone
-	GildedBlackstone
-	CrimsonStem
-	WarpedStem
-	CrimsonPlanks
-	WarpedPlanks
-	CrimsonFungus
-	WarpedFungus
-	CrimsonRoots
-	WarpedRoots
-	NetherSprouts
-	WeepingVines
-	TwistingVines
-	CrimsonNylium
-	WarpedNylium
-	Shroomlight
-	FungusBlock
-	WarpedWartBlock
-	CrimsonButton
-	WarpedButton
-	CrimsonPressurePlate
-	WarpedPressurePlate
-	CrimsonFence
-	WarpedFence
-	CrimsonStairs
-	WarpedStairs
-	CrimsonSlab
-	WarpedSlab
-	CrimsonTrapdoor
-	WarpedTrapdoor
-	CrimsonDoor
-	WarpedDoor
-	PillarQuartzBlock
-	ChiseledQuartzBlock
-	QuartzSlab
-	QuartzStairs
-	Diorite
-	Andesite
-	Granite
-	PolishedDiorite
-	PolishedAndesite
-	PolishedGranite
-	SeaLantern
-	Prismarine
-	PrismarineBricks
-	DarkPrismarine
-	Sponge
-	WetSponge
-	PowerRail
-	DetectorRail
-	ActivatorRail
-	Rail
-	PoweredRail
-	StickPiston
-	Piston
-	RedstoneBlock
-	RedstoneTorch
-	RedstoneLamp
-	Lever
-	Button
-	PressurePlate
-	WeightedPressurePlate
-	DaylightDetector
-	Dispenser
-	Dropper
-	Hopper
-	Observer
-	Repeater
-	Comparator
-	TripwireHook
-	Tripwire
-	NoteBlock
-	Jukebox
-	PistonHead
-	AttachedPiston
-	WhiteWool
-	OrangeWool
-	MagentaWool
-	LightBlueWool
-	YellowWool
-	LimeWool
-	PinkWool
-	GrayWool
-	LightGrayWool
-	CyanWool
-	PurpleWool
-	BlueWool
-	BrownWool
-	GreenWool
-	RedWool
-	BlackWool
-	Carpet
-	TerracottaBlock
-	GlazedTerracotta
-	ConcretePowder
-	EndPortalFrame
-	EndPortal
-	DragonEgg
-	CommandBlock
-	Barrier
-	StructureBlock
-	JigsawBlock
-	LavaCauldron
-	WaterCauldron
-	PowderSnowCauldron
-	Composter
-	AmethystBlock
-	AmethystCluster
-	BuddingAmethyst
-	SmallAmethystBud
-	MediumAmethystBud
-	LargeAmethystBud
-	Calcite
-	Tuff
-	SmoothBasalt
-	Deepslate
-	CobbledDeepslate
-	PolishedDeepslate
-	DeepslateBricks
-	CrackedDeepslateBricks
-	DeepslateTiles
-	CrackedDeepslateTiles
-	ChiseledDeepslate
-	ReinforcedDeepslate
-	DripstoneBlock
-	PointedDripstone
-	MossBlock
-	MossCarpet
-	Azalea
-	FloweringAzalea
-	BigDripleaf
-	SmallDripleaf
-	GlowLichen
-	SporeBlossom
-	RootedDirt
-	HangingRoots
-	SculkSensor
-	SculkCatalyst
-	SculkShrieker
-	SculkVein
-	Froglit
-	Frogspawn
-	MangroveLog
-	MangroveWood
-	MangrovePlanks
-	MangrovePropagule
-	MangroveRoots
-	MangroveLeaves
-	Mud
-	MudBricks
-	PackedMud
-	StrippedMangroveLog
-	StrippedMangroveWood
-	MangroveButton
-	MangrovePressurePlate
-	MangroveFence
-	MangroveStairs
-	MangroveSlab
-	MangroveTrapdoor
-	MangroveDoor
-	CherryLog
-	CherryWood
-	CherryPlanks
-	StrippedCherryLog
-	StrippedCherryWood
-	CherryLeaves
-	CherryButton
-	CherryPressurePlate
-	CherryFence
-	CherryStairs
-	CherrySlab
-	CherryTrapdoor
-	CherryDoor
-	BambooBlock
-	StrippedBambooBlock
-	BambooPlanks
-	BambooMosaic
-	BambooButton
-	BambooPressurePlate
-	BambooFence
-	BambooStairs
-	BambooSlab
-	BambooTrapdoor
-	BambooDoor
-	ChiseledBookshelf
-	CalibratedSculkSensor
-	SuspiciousSand
-	SuspiciousGravel
-	Torchflower
-	PitcherPlant
-	SnifferEgg
-	PinkPetals
-	DecoratedPot
-	TrialSpawner
-	Crafter
-	CopperBlock
-	CutCopper
-	CopperDoor
-	CopperTrapdoor
-	CopperGrille
-	CopperBulb
-	LightBlock
-	OminousBottle
-	Vault
-	HeavyCore
-	BreezeRod
-	TrialKey
+	AcaciaButton                    = "acacia_button"
+	AcaciaDoor                      = "acacia_door"
+	AcaciaFence                     = "acacia_fence"
+	AcaciaFenceGate                 = "acacia_fence_gate"
+	AcaciaHangingSign               = "acacia_hanging_sign"
+	AcaciaLeaves                    = "acacia_leaves"
+	AcaciaLog                       = "acacia_log"
+	AcaciaPlanks                    = "acacia_planks"
+	AcaciaPressurePlate             = "acacia_pressure_plate"
+	AcaciaSapling                   = "acacia_sapling"
+	AcaciaSign                      = "acacia_sign"
+	AcaciaSlab                      = "acacia_slab"
+	AcaciaStairs                    = "acacia_stairs"
+	AcaciaTrapdoor                  = "acacia_trapdoor"
+	AcaciaWood                      = "acacia_wood"
+	ActivatorRail                   = "activator_rail"
+	Allium                          = "allium"
+	AmethystCluster                 = "amethyst_cluster"
+	AncientDebris                   = "ancient_debris"
+	Andesite                        = "andesite"
+	AndesiteSlab                    = "andesite_slab"
+	AndesiteStairs                  = "andesite_stairs"
+	AndesiteWall                    = "andesite_wall"
+	Anvil                           = "anvil"
+	Azalea                          = "azalea"
+	AzaleaLeaves                    = "azalea_leaves"
+	AzureBluet                      = "azure_bluet"
+	Bamboo                          = "bamboo"
+	BambooButton                    = "bamboo_button"
+	BambooDoor                      = "bamboo_door"
+	BambooFence                     = "bamboo_fence"
+	BambooFenceGate                 = "bamboo_fence_gate"
+	BambooHangingSign               = "bamboo_hanging_sign"
+	BambooMosaic                    = "bamboo_mosaic"
+	BambooMosaicSlab                = "bamboo_mosaic_slab"
+	BambooMosaicStairs              = "bamboo_mosaic_stairs"
+	BambooPlanks                    = "bamboo_planks"
+	BambooPressurePlate             = "bamboo_pressure_plate"
+	BambooShoot                     = "bamboo_shoot"
+	BambooSign                      = "bamboo_sign"
+	BambooSlab                      = "bamboo_slab"
+	BambooStairs                    = "bamboo_stairs"
+	BambooTrapdoor                  = "bamboo_trapdoor"
+	Barrel                          = "barrel"
+	Barrier                         = "barrier"
+	Basalt                          = "basalt"
+	Beacon                          = "beacon"
+	Bedrock                         = "bedrock"
+	BeeNest                         = "bee_nest"
+	Beehive                         = "beehive"
+	Beetroots                       = "beetroots"
+	Bell                            = "bell"
+	BigDripleaf                     = "big_dripleaf"
+	BirchButton                     = "birch_button"
+	BirchDoor                       = "birch_door"
+	BirchFence                      = "birch_fence"
+	BirchFenceGate                  = "birch_fence_gate"
+	BirchHangingSign                = "birch_hanging_sign"
+	BirchLeaves                     = "birch_leaves"
+	BirchLog                        = "birch_log"
+	BirchPlanks                     = "birch_planks"
+	BirchPressurePlate              = "birch_pressure_plate"
+	BirchSapling                    = "birch_sapling"
+	BirchSign                       = "birch_sign"
+	BirchSlab                       = "birch_slab"
+	BirchStairs                     = "birch_stairs"
+	BirchTrapdoor                   = "birch_trapdoor"
+	BirchWood                       = "birch_wood"
+	BlackBanner                     = "black_banner"
+	BlackBed                        = "black_bed"
+	BlackCandle                     = "black_candle"
+	BlackCarpet                     = "black_carpet"
+	BlackConcrete                   = "black_concrete"
+	BlackConcretePowder             = "black_concrete_powder"
+	BlackGlazedTerracotta           = "black_glazed_terracotta"
+	BlackShulkerBox                 = "black_shulker_box"
+	BlackStainedGlass               = "black_stained_glass"
+	BlackStainedGlassPane           = "black_stained_glass_pane"
+	BlackTerracotta                 = "black_terracotta"
+	BlackWool                       = "black_wool"
+	Blackstone                      = "blackstone"
+	BlackstoneSlab                  = "blackstone_slab"
+	BlackstoneStairs                = "blackstone_stairs"
+	BlackstoneWall                  = "blackstone_wall"
+	BlastFurnace                    = "blast_furnace"
+	BlockOfAmethyst                 = "block_of_amethyst"
+	BlockOfBamboo                   = "block_of_bamboo"
+	BlockOfCoal                     = "block_of_coal"
+	BlockOfCopper                   = "block_of_copper"
+	BlockOfDiamond                  = "block_of_diamond"
+	BlockOfEmerald                  = "block_of_emerald"
+	BlockOfGold                     = "block_of_gold"
+	BlockOfIron                     = "block_of_iron"
+	BlockOfLapisLazuli              = "block_of_lapis_lazuli"
+	BlockOfNetherite                = "block_of_netherite"
+	BlockOfQuartz                   = "block_of_quartz"
+	BlockOfRawCopper                = "block_of_raw_copper"
+	BlockOfRawGold                  = "block_of_raw_gold"
+	BlockOfRawIron                  = "block_of_raw_iron"
+	BlockOfRedstone                 = "block_of_redstone"
+	BlockOfResin                    = "block_of_resin"
+	BlockOfStrippedBamboo           = "block_of_stripped_bamboo"
+	BlueBanner                      = "blue_banner"
+	BlueBed                         = "blue_bed"
+	BlueCandle                      = "blue_candle"
+	BlueCarpet                      = "blue_carpet"
+	BlueConcrete                    = "blue_concrete"
+	BlueConcretePowder              = "blue_concrete_powder"
+	BlueGlazedTerracotta            = "blue_glazed_terracotta"
+	BlueIce                         = "blue_ice"
+	BlueOrchid                      = "blue_orchid"
+	BlueShulkerBox                  = "blue_shulker_box"
+	BlueStainedGlass                = "blue_stained_glass"
+	BlueStainedGlassPane            = "blue_stained_glass_pane"
+	BlueTerracotta                  = "blue_terracotta"
+	BlueWool                        = "blue_wool"
+	BoneBlock                       = "bone_block"
+	Bookshelf                       = "bookshelf"
+	BrainCoral                      = "brain_coral"
+	BrainCoralBlock                 = "brain_coral_block"
+	BrainCoralFan                   = "brain_coral_fan"
+	BrewingStand                    = "brewing_stand"
+	BrickSlab                       = "brick_slab"
+	BrickStairs                     = "brick_stairs"
+	BrickWall                       = "brick_wall"
+	Bricks                          = "bricks"
+	BrownBanner                     = "brown_banner"
+	BrownBed                        = "brown_bed"
+	BrownCandle                     = "brown_candle"
+	BrownCarpet                     = "brown_carpet"
+	BrownConcrete                   = "brown_concrete"
+	BrownConcretePowder             = "brown_concrete_powder"
+	BrownGlazedTerracotta           = "brown_glazed_terracotta"
+	BrownMushroom                   = "brown_mushroom"
+	BrownMushroomBlock              = "brown_mushroom_block"
+	BrownShulkerBox                 = "brown_shulker_box"
+	BrownStainedGlass               = "brown_stained_glass"
+	BrownStainedGlassPane           = "brown_stained_glass_pane"
+	BrownTerracotta                 = "brown_terracotta"
+	BrownWool                       = "brown_wool"
+	BubbleColumn                    = "bubble_column"
+	BubbleCoral                     = "bubble_coral"
+	BubbleCoralBlock                = "bubble_coral_block"
+	BubbleCoralFan                  = "bubble_coral_fan"
+	BuddingAmethyst                 = "budding_amethyst"
+	Bush                            = "bush"
+	Cactus                          = "cactus"
+	Cake                            = "cake"
+	Calcite                         = "calcite"
+	CalibratedSculkSensor           = "calibrated_sculk_sensor"
+	Campfire                        = "campfire"
+	Candle                          = "candle"
+	Carrots                         = "carrots"
+	CartographyTable                = "cartography_table"
+	CarvedPumpkin                   = "carved_pumpkin"
+	Cauldron                        = "cauldron"
+	CaveVines                       = "cave_vines"
+	Chain                           = "chain"
+	ChainCommandBlock               = "chain_command_block"
+	Chest                           = "chest"
+	CherryButton                    = "cherry_button"
+	CherryDoor                      = "cherry_door"
+	CherryFence                     = "cherry_fence"
+	CherryFenceGate                 = "cherry_fence_gate"
+	CherryHangingSign               = "cherry_hanging_sign"
+	CherryLeaves                    = "cherry_leaves"
+	CherryLog                       = "cherry_log"
+	CherryPlanks                    = "cherry_planks"
+	CherryPressurePlate             = "cherry_pressure_plate"
+	CherrySapling                   = "cherry_sapling"
+	CherrySign                      = "cherry_sign"
+	CherrySlab                      = "cherry_slab"
+	CherryStairs                    = "cherry_stairs"
+	CherryTrapdoor                  = "cherry_trapdoor"
+	CherryWood                      = "cherry_wood"
+	ChippedAnvil                    = "chipped_anvil"
+	ChiseledBookshelf               = "chiseled_bookshelf"
+	ChiseledCopper                  = "chiseled_copper"
+	ChiseledDeepslate               = "chiseled_deepslate"
+	ChiseledNetherBricks            = "chiseled_nether_bricks"
+	ChiseledPolishedBlackstone      = "chiseled_polished_blackstone"
+	ChiseledQuartzBlock             = "chiseled_quartz_block"
+	ChiseledRedSandstone            = "chiseled_red_sandstone"
+	ChiseledResinBricks             = "chiseled_resin_bricks"
+	ChiseledSandstone               = "chiseled_sandstone"
+	ChiseledStoneBricks             = "chiseled_stone_bricks"
+	ChiseledTuff                    = "chiseled_tuff"
+	ChiseledTuffBricks              = "chiseled_tuff_bricks"
+	ChorusFlower                    = "chorus_flower"
+	ChorusPlant                     = "chorus_plant"
+	Clay                            = "clay"
+	CoalBlock                       = "coal_block"
+	CoalOre                         = "coal_ore"
+	CoarseDirt                      = "coarse_dirt"
+	Cobblestone                     = "cobblestone"
+	CobblestoneSlab                 = "cobblestone_slab"
+	CobblestoneStairs               = "cobblestone_stairs"
+	CobblestoneWall                 = "cobblestone_wall"
+	CobbledDeepslate                = "cobbled_deepslate"
+	CobbledDeepslateSlab            = "cobbled_deepslate_slab"
+	CobbledDeepslateStairs          = "cobbled_deepslate_stairs"
+	CobbledDeepslateWall            = "cobbled_deepslate_wall"
+	CocoaBeans                      = "cocoa_beans"
+	CommandBlock                    = "command_block"
+	Composter                       = "composter"
+	Conduit                         = "conduit"
+	CopperBlock                     = "copper_block"
+	CopperOre                       = "copper_ore"
+	CoralBlock                      = "coral_block"
+	CraftingTable                   = "crafting_table"
+	CrimsonButton                   = "crimson_button"
+	CrimsonDoor                     = "crimson_door"
+	CrimsonFence                    = "crimson_fence"
+	CrimsonFenceGate                = "crimson_fence_gate"
+	CrimsonFungus                   = "crimson_fungus"
+	CrimsonHangingSign              = "crimson_hanging_sign"
+	CrimsonHyphae                   = "crimson_hyphae"
+	CrimsonNylium                   = "crimson_nylium"
+	CrimsonPlanks                   = "crimson_planks"
+	CrimsonPressurePlate            = "crimson_pressure_plate"
+	CrimsonRoots                    = "crimson_roots"
+	CrimsonSign                     = "crimson_sign"
+	CrimsonSlab                     = "crimson_slab"
+	CrimsonStairs                   = "crimson_stairs"
+	CrimsonStem                     = "crimson_stem"
+	CrimsonTrapdoor                 = "crimson_trapdoor"
+	CryingObsidian                  = "crying_obsidian"
+	CutCopper                       = "cut_copper"
+	CutCopperSlab                   = "cut_copper_slab"
+	CutCopperStairs                 = "cut_copper_stairs"
+	CutRedSandstone                 = "cut_red_sandstone"
+	CutRedSandstoneSlab             = "cut_red_sandstone_slab"
+	CutSandstone                    = "cut_sandstone"
+	CutSandstoneSlab                = "cut_sandstone_slab"
+	CyanBanner                      = "cyan_banner"
+	CyanBed                         = "cyan_bed"
+	CyanCandle                      = "cyan_candle"
+	CyanCarpet                      = "cyan_carpet"
+	CyanConcrete                    = "cyan_concrete"
+	CyanConcretePowder              = "cyan_concrete_powder"
+	CyanGlazedTerracotta            = "cyan_glazed_terracotta"
+	CyanShulkerBox                  = "cyan_shulker_box"
+	CyanStainedGlass                = "cyan_stained_glass"
+	CyanStainedGlassPane            = "cyan_stained_glass_pane"
+	CyanTerracotta                  = "cyan_terracotta"
+	CyanWool                        = "cyan_wool"
+	DamagedAnvil                    = "damaged_anvil"
+	Dandelion                       = "dandelion"
+	DarkOakButton                   = "dark_oak_button"
+	DarkOakDoor                     = "dark_oak_door"
+	DarkOakFence                    = "dark_oak_fence"
+	DarkOakFenceGate                = "dark_oak_fence_gate"
+	DarkOakHangingSign              = "dark_oak_hanging_sign"
+	DarkOakLeaves                   = "dark_oak_leaves"
+	DarkOakLog                      = "dark_oak_log"
+	DarkOakPlanks                   = "dark_oak_planks"
+	DarkOakPressurePlate            = "dark_oak_pressure_plate"
+	DarkOakSapling                  = "dark_oak_sapling"
+	DarkOakSign                     = "dark_oak_sign"
+	DarkOakSlab                     = "dark_oak_slab"
+	DarkOakStairs                   = "dark_oak_stairs"
+	DarkOakTrapdoor                 = "dark_oak_trapdoor"
+	DarkOakWood                     = "dark_oak_wood"
+	DarkPrismarine                  = "dark_prismarine"
+	DarkPrismarineSlab              = "dark_prismarine_slab"
+	DarkPrismarineStairs            = "dark_prismarine_stairs"
+	DaylightDetector                = "daylight_detector"
+	DeadBrainCoral                  = "dead_brain_coral"
+	DeadBrainCoralBlock             = "dead_brain_coral_block"
+	DeadBrainCoralFan               = "dead_brain_coral_fan"
+	DeadBush                        = "dead_bush"
+	DeadHornCoral                   = "dead_horn_coral"
+	DeadHornCoralBlock              = "dead_horn_coral_block"
+	DeadHornCoralFan                = "dead_horn_coral_fan"
+	DeadTubeCoral                   = "dead_tube_coral"
+	DeadTubeCoralBlock              = "dead_tube_coral_block"
+	DeadTubeCoralFan                = "dead_tube_coral_fan"
+	DetectorRail                    = "detector_rail"
+	DiamondBlock                    = "diamond_block"
+	DiamondOre                      = "diamond_ore"
+	Diorite                         = "diorite"
+	DioriteSlab                     = "diorite_slab"
+	DioriteStairs                   = "diorite_stairs"
+	DioriteWall                     = "diorite_wall"
+	Dirt                            = "dirt"
+	DirtPath                        = "dirt_path"
+	DirtWithRoots                   = "dirt_with_roots"
+	Dispenser                       = "dispenser"
+	DragonEgg                       = "dragon_egg"
+	DragonHead                      = "dragon_head"
+	DriedKelpBlock                  = "dried_kelp_block"
+	Dropper                         = "dropper"
+	EmeraldBlock                    = "emerald_block"
+	EmeraldOre                      = "emerald_ore"
+	EnchantingTable                 = "enchanting_table"
+	EndPortalFrame                  = "end_portal_frame"
+	EndRod                          = "end_rod"
+	EndStone                        = "end_stone"
+	EndStoneBricks                  = "end_stone_bricks"
+	EndStoneBrickSlab               = "end_stone_brick_slab"
+	EndStoneBrickStairs             = "end_stone_brick_stairs"
+	EndStoneBrickWall               = "end_stone_brick_wall"
+	EnderChest                      = "ender_chest"
+	ExposedChiseledCopper           = "exposed_chiseled_copper"
+	ExposedCopper                   = "exposed_copper"
+	ExposedCutCopper                = "exposed_cut_copper"
+	ExposedCutCopperSlab            = "exposed_cut_copper_slab"
+	ExposedCutCopperStairs          = "exposed_cut_copper_stairs"
+	Farmland                        = "farmland"
+	Fern                            = "fern"
+	Fire                            = "fire"
+	FireCoral                       = "fire_coral"
+	FireCoralBlock                  = "fire_coral_block"
+	FireCoralFan                    = "fire_coral_fan"
+	FletchingTable                  = "fletching_table"
+	FlowerPot                       = "flower_pot"
+	FloweringAzalea                 = "flowering_azalea"
+	FloweringAzaleaLeaves           = "flowering_azalea_leaves"
+	Frogspawn                       = "frogspawn"
+	FrostedIce                      = "frosted_ice"
+	Furnace                         = "furnace"
+	GildedBlackstone                = "gilded_blackstone"
+	Glass                           = "glass"
+	GlassPane                       = "glass_pane"
+	Glowstone                       = "glowstone"
+	GoldBlock                       = "gold_block"
+	GoldOre                         = "gold_ore"
+	Granite                         = "granite"
+	GraniteSlab                     = "granite_slab"
+	GraniteStairs                   = "granite_stairs"
+	GraniteWall                     = "granite_wall"
+	GrassyBlock                     = "grassy_block"
+	Gravel                          = "gravel"
+	GrayBanner                      = "gray_banner"
+	GrayBed                         = "gray_bed"
+	GrayCandle                      = "gray_candle"
+	GrayCarpet                      = "gray_carpet"
+	GrayConcrete                    = "gray_concrete"
+	GrayConcretePowder              = "gray_concrete_powder"
+	GrayGlazedTerracotta            = "gray_glazed_terracotta"
+	GrayShulkerBox                  = "gray_shulker_box"
+	GrayStainedGlass                = "gray_stained_glass"
+	GrayStainedGlassPane            = "gray_stained_glass_pane"
+	GrayTerracotta                  = "gray_terracotta"
+	GrayWool                        = "gray_wool"
+	GreenBanner                     = "green_banner"
+	GreenBed                        = "green_bed"
+	GreenCandle                     = "green_candle"
+	GreenCarpet                     = "green_carpet"
+	GreenConcrete                   = "green_concrete"
+	GreenConcretePowder             = "green_concrete_powder"
+	GreenGlazedTerracotta           = "green_glazed_terracotta"
+	GreenShulkerBox                 = "green_shulker_box"
+	GreenStainedGlass               = "green_stained_glass"
+	GreenStainedGlassPane           = "green_stained_glass_pane"
+	GreenTerracotta                 = "green_terracotta"
+	GreenWool                       = "green_wool"
+	Grindstone                      = "grindstone"
+	HangingRoots                    = "hanging_roots"
+	HayBlock                        = "hay_block"
+	HeavyWeightedPressurePlate      = "heavy_weighted_pressure_plate"
+	HoneyBlock                      = "honey_block"
+	HoneycombBlock                  = "honeycomb_block"
+	Hopper                          = "hopper"
+	HornCoral                       = "horn_coral"
+	HornCoralBlock                  = "horn_coral_block"
+	HornCoralFan                    = "horn_coral_fan"
+	Ice                             = "ice"
+	InfestedChiseledStoneBricks     = "infested_chiseled_stone_bricks"
+	InfestedCobblestone             = "infested_cobblestone"
+	InfestedCrackedStoneBricks      = "infested_cracked_stone_bricks"
+	InfestedMossyStoneBricks        = "infested_mossy_stone_bricks"
+	InfestedStone                   = "infested_stone"
+	InfestedStoneBricks             = "infested_stone_bricks"
+	IronBars                        = "iron_bars"
+	IronBlock                       = "iron_block"
+	IronDoor                        = "iron_door"
+	IronOre                         = "iron_ore"
+	IronTrapdoor                    = "iron_trapdoor"
+	Jigsaw                          = "jigsaw"
+	Jukebox                         = "jukebox"
+	JungleButton                    = "jungle_button"
+	JungleDoor                      = "jungle_door"
+	JungleFence                     = "jungle_fence"
+	JungleFenceGate                 = "jungle_fence_gate"
+	JungleHangingSign               = "jungle_hanging_sign"
+	JungleLeaves                    = "jungle_leaves"
+	JungleLog                       = "jungle_log"
+	JunglePlanks                    = "jungle_planks"
+	JunglePressurePlate             = "jungle_pressure_plate"
+	JungleSapling                   = "jungle_sapling"
+	JungleSign                      = "jungle_sign"
+	JungleSlab                      = "jungle_slab"
+	JungleStairs                    = "jungle_stairs"
+	JungleTrapdoor                  = "jungle_trapdoor"
+	JungleWood                      = "jungle_wood"
+	Kelp                            = "kelp"
+	Ladder                          = "ladder"
+	Lantern                         = "lantern"
+	LapisBlock                      = "lapis_block"
+	LapisOre                        = "lapis_ore"
+	LargeAmethystBud                = "large_amethyst_bud"
+	LargeFern                       = "large_fern"
+	Lectern                         = "lectern"
+	Letuce                          = "lettuce"
+	LightBlock                      = "light_block"
+	LightBlueBanner                 = "light_blue_banner"
+	LightBlueBed                    = "light_blue_bed"
+	LightBlueCandle                 = "light_blue_candle"
+	LightBlueCarpet                 = "light_blue_carpet"
+	LightBlueConcrete               = "light_blue_concrete"
+	LightBlueConcretePowder         = "light_blue_concrete_powder"
+	LightBlueGlazedTerracotta       = "light_blue_glazed_terracotta"
+	LightBlueShulkerBox             = "light_blue_shulker_box"
+	LightBlueStainedGlass           = "light_blue_stained_glass"
+	LightBlueStainedGlassPane       = "light_blue_stained_glass_pane"
+	LightBlueTerracotta             = "light_blue_terracotta"
+	LightBlueWool                   = "light_blue_wool"
+	LightGrayBanner                 = "light_gray_banner"
+	LightGrayBed                    = "light_gray_bed"
+	LightGrayCandle                 = "light_gray_candle"
+	LightGrayCarpet                 = "light_gray_carpet"
+	LightGrayConcrete               = "light_gray_concrete"
+	LightGrayConcretePowder         = "light_gray_concrete_powder"
+	LightGrayGlazedTerracotta       = "light_gray_glazed_terracotta"
+	LightGrayShulkerBox             = "light_gray_shulker_box"
+	LightGrayStainedGlass           = "light_gray_stained_glass"
+	LightGrayStainedGlassPane       = "light_gray_stained_glass_pane"
+	LightGrayTerracotta             = "light_gray_terracotta"
+	LightGrayWool                   = "light_gray_wool"
+	LightWeightedPressurePlate      = "light_weighted_pressure_plate"
+	Lilac                           = "lilac"
+	LilyOfTheValley                 = "lily_of_the_valley"
+	LilyPad                         = "lily_pad"
+	Loom                            = "loom"
+	MagentaBanner                   = "magenta_banner"
+	MagentaBed                      = "magenta_bed"
+	MagentaCandle                   = "magenta_candle"
+	MagentaCarpet                   = "magenta_carpet"
+	MagentaConcrete                 = "magenta_concrete"
+	MagentaConcretePowder           = "magenta_concrete_powder"
+	MagentaGlazedTerracotta         = "magenta_glazed_terracotta"
+	MagentaShulkerBox               = "magenta_shulker_box"
+	MagentaStainedGlass             = "magenta_stained_glass"
+	MagentaStainedGlassPane         = "magenta_stained_glass_pane"
+	MagentaTerracotta               = "magenta_terracotta"
+	MagentaWool                     = "magenta_wool"
+	MagmaBlock                      = "magma_block"
+	MangroveButton                  = "mangrove_button"
+	MangroveDoor                    = "mangrove_door"
+	MangroveFence                   = "mangrove_fence"
+	MangroveFenceGate               = "mangrove_fence_gate"
+	MangroveHangingSign             = "mangrove_hanging_sign"
+	MangroveLeaves                  = "mangrove_leaves"
+	MangroveLog                     = "mangrove_log"
+	MangrovePlanks                  = "mangrove_planks"
+	MangrovePressurePlate           = "mangrove_pressure_plate"
+	MangrovePropagule               = "mangrove_propagule"
+	MangroveRoots                   = "mangrove_roots"
+	MangroveSign                    = "mangrove_sign"
+	MangroveSlab                    = "mangrove_slab"
+	MangroveStairs                  = "mangrove_stairs"
+	MangroveTrapdoor                = "mangrove_trapdoor"
+	MangroveWood                    = "mangrove_wood"
+	MediumAmethystBud               = "medium_amethyst_bud"
+	Melon                           = "melon"
+	MelonStem                       = "melon_stem"
+	MossBlock                       = "moss_block"
+	MossCarpet                      = "moss_carpet"
+	MossyCobblestone                = "mossy_cobblestone"
+	MossyCobblestoneSlab            = "mossy_cobblestone_slab"
+	MossyCobblestoneStairs          = "mossy_cobblestone_stairs"
+	MossyCobblestoneWall            = "mossy_cobblestone_wall"
+	MossyStoneBricks                = "mossy_stone_bricks"
+	MossyStoneBrickSlab             = "mossy_stone_brick_slab"
+	MossyStoneBrickStairs           = "mossy_stone_brick_stairs"
+	MossyStoneBrickWall             = "mossy_stone_brick_wall"
+	Mud                             = "mud"
+	MudBrickSlab                    = "mud_brick_slab"
+	MudBrickStairs                  = "mud_brick_stairs"
+	MudBrickWall                    = "mud_brick_wall"
+	MudBricks                       = "mud_bricks"
+	MuddyMangroveRoots              = "muddy_mangrove_roots"
+	MushroomStem                    = "mushroom_stem"
+	Mycelium                        = "mycelium"
+	NetherBrickFence                = "nether_brick_fence"
+	NetherBrickSlab                 = "nether_brick_slab"
+	NetherBrickStairs               = "nether_brick_stairs"
+	NetherBrickWall                 = "nether_brick_wall"
+	NetherBricks                    = "nether_bricks"
+	NetherGoldOre                   = "nether_gold_ore"
+	NetherPortal                    = "nether_portal"
+	NetherQuartzOre                 = "nether_quartz_ore"
+	NetherSprouts                   = "nether_sprouts"
+	NetherWart                      = "nether_wart"
+	NetherWartBlock                 = "nether_wart_block"
+	NetheriteBlock                  = "netherite_block"
+	Netherrack                      = "netherrack"
+	NoteBlock                       = "note_block"
+	OakButton                       = "oak_button"
+	OakDoor                         = "oak_door"
+	OakFence                        = "oak_fence"
+	OakFenceGate                    = "oak_fence_gate"
+	OakHangingSign                  = "oak_hanging_sign"
+	OakLeaves                       = "oak_leaves"
+	OakLog                          = "oak_log"
+	OakPlanks                       = "oak_planks"
+	OakPressurePlate                = "oak_pressure_plate"
+	OakSapling                      = "oak_sapling"
+	OakSign                         = "oak_sign"
+	OakSlab                         = "oak_slab"
+	OakStairs                       = "oak_stairs"
+	OakTrapdoor                     = "oak_trapdoor"
+	OakWood                         = "oak_wood"
+	Observer                        = "observer"
+	Obsidian                        = "obsidian"
+	OrangeBanner                    = "orange_banner"
+	OrangeBed                       = "orange_bed"
+	OrangeCandle                    = "orange_candle"
+	OrangeCarpet                    = "orange_carpet"
+	OrangeConcrete                  = "orange_concrete"
+	OrangeConcretePowder            = "orange_concrete_powder"
+	OrangeGlazedTerracotta          = "orange_glazed_terracotta"
+	OrangeShulkerBox                = "orange_shulker_box"
+	OrangeStainedGlass              = "orange_stained_glass"
+	OrangeStainedGlassPane          = "orange_stained_glass_pane"
+	OrangeTerracotta                = "orange_terracotta"
+	OrangeWool                      = "orange_wool"
+	OxidizedChiseledCopper          = "oxidized_chiseled_copper"
+	OxidizedCopper                  = "oxidized_copper"
+	OxidizedCutCopper               = "oxidized_cut_copper"
+	OxidizedCutCopperSlab           = "oxidized_cut_copper_slab"
+	OxidizedCutCopperStairs         = "oxidized_cut_copper_stairs"
+	PackedIce                       = "packed_ice"
+	PackedMud                       = "packed_mud"
+	Peony                           = "peony"
+	PetrifiedOakSlab                = "petrified_oak_slab"
+	Piston                          = "piston"
+	PlayerHead                      = "player_head"
+	Podzol                          = "podzol"
+	PointedDripstone                = "pointed_dripstone"
+	PolishedAndesite                = "polished_andesite"
+	PolishedAndesiteSlab            = "polished_andesite_slab"
+	PolishedAndesiteStairs          = "polished_andesite_stairs"
+	PolishedBasalt                  = "polished_basalt"
+	PolishedBlackstone              = "polished_blackstone"
+	PolishedBlackstoneBrickSlab     = "polished_blackstone_brick_slab"
+	PolishedBlackstoneBrickStairs   = "polished_blackstone_brick_stairs"
+	PolishedBlackstoneBrickWall     = "polished_blackstone_brick_wall"
+	PolishedBlackstoneBricks        = "polished_blackstone_bricks"
+	PolishedBlackstoneButton        = "polished_blackstone_button"
+	PolishedBlackstonePressurePlate = "polished_blackstone_pressure_plate"
+	PolishedBlackstoneSlab          = "polished_blackstone_slab"
+	PolishedBlackstoneStairs        = "polished_blackstone_stairs"
+	PolishedBlackstoneWall          = "polished_blackstone_wall"
+	PolishedDeepslate               = "polished_deepslate"
+	PolishedDeepslateSlab           = "polished_deepslate_slab"
+	PolishedDeepslateStairs         = "polished_deepslate_stairs"
+	PolishedDeepslateWall           = "polished_deepslate_wall"
+	PolishedDiorite                 = "polished_diorite"
+	PolishedDioriteSlab             = "polished_diorite_slab"
+	PolishedDioriteStairs           = "polished_diorite_stairs"
+	PolishedGranite                 = "polished_granite"
+	PolishedGraniteSlab             = "polished_granite_slab"
+	PolishedGraniteStairs           = "polished_granite_stairs"
+	PolishedTuff                    = "polished_tuff"
+	PolishedTuffSlab                = "polished_tuff_slab"
+	PolishedTuffStairs              = "polished_tuff_stairs"
+	PolishedTuffWall                = "polished_tuff_wall"
+	Poppy                           = "poppy"
+	Potatoes                        = "potatoes"
+	PowderSnow                      = "powder_snow"
+	PoweredRail                     = "powered_rail"
+	Prismarine                      = "prismarine"
+	PrismarineBrickSlab             = "prismarine_brick_slab"
+	PrismarineBrickStairs           = "prismarine_brick_stairs"
+	PrismarineBricks                = "prismarine_bricks"
+	PrismarineSlab                  = "prismarine_slab"
+	PrismarineStairs                = "prismarine_stairs"
+	PrismarineWall                  = "prismarine_wall"
+	Pumpkin                         = "pumpkin"
+	PumpkinStem                     = "pumpkin_stem"
+	PurpleBanner                    = "purple_banner"
+	PurpleBed                       = "purple_bed"
+	PurpleCandle                    = "purple_candle"
+	PurpleCarpet                    = "purple_carpet"
+	PurpleConcrete                  = "purple_concrete"
+	PurpleConcretePowder            = "purple_concrete_powder"
+	PurpleGlazedTerracotta          = "purple_glazed_terracotta"
+	PurpleShulkerBox                = "purple_shulker_box"
+	PurpleStainedGlass              = "purple_stained_glass"
+	PurpleStainedGlassPane          = "purple_stained_glass_pane"
+	PurpleTerracotta                = "purple_terracotta"
+	PurpleWool                      = "purple_wool"
+	PurpurBlock                     = "purpur_block"
+	PurpurPillar                    = "purpur_pillar"
+	PurpurSlab                      = "purpur_slab"
+	PurpurStairs                    = "purpur_stairs"
+	QuartzBlock                     = "quartz_block"
+	QuartzBricks                    = "quartz_bricks"
+	QuartzPillar                    = "quartz_pillar"
+	QuartzSlab                      = "quartz_slab"
+	QuartzStairs                    = "quartz_stairs"
+	Rail                            = "rail"
+	RawCopperBlock                  = "raw_copper_block"
+	RawGoldBlock                    = "raw_gold_block"
+	RawIronBlock                    = "raw_iron_block"
+	RedBanner                       = "red_banner"
+	RedBed                          = "red_bed"
+	RedCandle                       = "red_candle"
+	RedCarpet                       = "red_carpet"
+	RedConcrete                     = "red_concrete"
+	RedConcretePowder               = "red_concrete_powder"
+	RedGlazedTerracotta             = "red_glazed_terracotta"
+	RedMushroom                     = "red_mushroom"
+	RedMushroomBlock                = "red_mushroom_block"
+	RedNetherBrickSlab              = "red_nether_brick_slab"
+	RedNetherBrickStairs            = "red_nether_brick_stairs"
+	RedNetherBrickWall              = "red_nether_brick_wall"
+	RedNetherBricks                 = "red_nether_bricks"
+	RedSand                         = "red_sand"
+	RedSandstone                    = "red_sandstone"
+	RedSandstoneSlab                = "red_sandstone_slab"
+	RedSandstoneStairs              = "red_sandstone_stairs"
+	RedSandstoneWall                = "red_sandstone_wall"
+	RedShulkerBox                   = "red_shulker_box"
+	RedStainedGlass                 = "red_stained_glass"
+	RedStainedGlassPane             = "red_stained_glass_pane"
+	RedTerracotta                   = "red_terracotta"
+	RedWool                         = "red_wool"
+	RedstoneBlock                   = "redstone_block"
+	RedstoneLamp                    = "redstone_lamp"
+	RedstoneOre                     = "redstone_ore"
+	RedstoneTorch                   = "redstone_torch"
+	ReinforcedDeepslate             = "reinforced_deepslate"
+	RepeatingCommandBlock           = "repeating_command_block"
+	RespawnAnchor                   = "respawn_anchor"
+	RootedDirt                      = "rooted_dirt"
+	RoseBush                        = "rose_bush"
+	Sand                            = "sand"
+	Sandstone                       = "sandstone"
+	SandstoneSlab                   = "sandstone_slab"
+	SandstoneStairs                 = "sandstone_stairs"
+	SandstoneWall                   = "sandstone_wall"
+	Scaffolding                     = "scaffolding"
+	Sculk                           = "sculk"
+	SculkCatalyst                   = "sculk_catalyst"
+	SculkSensor                     = "sculk_sensor"
+	SculkShrieker                   = "sculk_shrieker"
+	SculkVein                       = "sculk_vein"
+	SeaLantern                      = "sea_lantern"
+	SeaPickle                       = "sea_pickle"
+	Seagrass                        = "seagrass"
+	ShortGrass                      = "short_grass"
+	Shroomlight                     = "shroomlight"
+	ShulkerBox                      = "shulker_box"
+	SkeletalSkull                   = "skeletal_skull"
+	SkeletonSkull                   = "skeleton_skull"
+	Skull                           = "skull"
+	SlimeBlock                      = "slime_block"
+	SmallAmethystBud                = "small_amethyst_bud"
+	SmallDripleaf                   = "small_dripleaf"
+	SmithingTable                   = "smithing_table"
+	Smoker                          = "smoker"
+	SmoothBasalt                    = "smooth_basalt"
+	SmoothQuartz                    = "smooth_quartz"
+	SmoothQuartzSlab                = "smooth_quartz_slab"
+	SmoothQuartzStairs              = "smooth_quartz_stairs"
+	SmoothRedSandstone              = "smooth_red_sandstone"
+	SmoothRedSandstoneSlab          = "smooth_red_sandstone_slab"
+	SmoothRedSandstoneStairs        = "smooth_red_sandstone_stairs"
+	SmoothSandstone                 = "smooth_sandstone"
+	SmoothSandstoneSlab             = "smooth_sandstone_slab"
+	SmoothSandstoneStairs           = "smooth_sandstone_stairs"
+	SmoothStone                     = "smooth_stone"
+	SmoothStoneSlab                 = "smooth_stone_slab"
+	SnifferEgg                      = "sniffer_egg"
+	Snow                            = "snow"
+	SnowBlock                       = "snow_block"
+	SoulCampfire                    = "soul_campfire"
+	SoulFire                        = "soul_fire"
+	SoulLantern                     = "soul_lantern"
+	SoulSand                        = "soul_sand"
+	SoulSoil                        = "soul_soil"
+	SoulTorch                       = "soul_torch"
+	Spawner                         = "spawner"
+	Sponge                          = "sponge"
+	SporeBlossom                    = "spore_blossom"
+	SpruceButton                    = "spruce_button"
+	SpruceDoor                      = "spruce_door"
+	SpruceFence                     = "spruce_fence"
+	SpruceFenceGate                 = "spruce_fence_gate"
+	SpruceHangingSign               = "spruce_hanging_sign"
+	SpruceLeaves                    = "spruce_leaves"
+	SpruceLog                       = "spruce_log"
+	SprucePlanks                    = "spruce_planks"
+	SprucePressurePlate             = "spruce_pressure_plate"
+	SpruceSapling                   = "spruce_sapling"
+	SpruceSign                      = "spruce_sign"
+	SpruceSlab                      = "spruce_slab"
+	SpruceStairs                    = "spruce_stairs"
+	SpruceTrapdoor                  = "spruce_trapdoor"
+	SpruceWood                      = "spruce_wood"
+	StainedGlass                    = "stained_glass"
+	StainedGlassPane                = "stained_glass_pane"
+	StainedHardenedClay             = "stained_hardened_clay"
+	StandingBanner                  = "standing_banner"
+	StandingSign                    = "standing_sign"
+	StickyPiston                    = "sticky_piston"
+	Stone                           = "stone"
+	StoneBrickSlab                  = "stone_brick_slab"
+	StoneBrickStairs                = "stone_brick_stairs"
+	StoneBrickWall                  = "stone_brick_wall"
+	StoneBricks                     = "stone_bricks"
+	StoneButton                     = "stone_button"
+	StonePressurePlate              = "stone_pressure_plate"
+	StoneSlab                       = "stone_slab"
+	StoneStairs                     = "stone_stairs"
+	StoneWall                       = "stone_wall"
+	Stonecutter                     = "stonecutter"
+	StrippedAcaciaLog               = "stripped_acacia_log"
+	StrippedAcaciaWood              = "stripped_acacia_wood"
+	StrippedBambooBlock             = "stripped_bamboo_block"
+	StrippedBirchLog                = "stripped_birch_log"
+	StrippedBirchWood               = "stripped_birch_wood"
+	StrippedCherryLog               = "stripped_cherry_log"
+	StrippedCherryWood              = "stripped_cherry_wood"
+	StrippedCrimsonHyphae           = "stripped_crimson_hyphae"
+	StrippedCrimsonStem             = "stripped_crimson_stem"
+	StrippedDarkOakLog              = "stripped_dark_oak_log"
+	StrippedDarkOakWood             = "stripped_dark_oak_wood"
+	StrippedJungleLog               = "stripped_jungle_log"
+	StrippedJungleWood              = "stripped_jungle_wood"
+	StrippedMangroveLog             = "stripped_mangrove_log"
+	StrippedMangroveWood            = "stripped_mangrove_wood"
+	StrippedOakLog                  = "stripped_oak_log"
+	StrippedOakWood                 = "stripped_oak_wood"
+	StrippedSpruceLog               = "stripped_spruce_log"
+	StrippedSpruceWood              = "stripped_spruce_wood"
+	StrippedWarpedHyphae            = "stripped_warped_hyphae"
+	StrippedWarpedStem              = "stripped_warped_stem"
+	StructureBlock                  = "structure_block"
+	StructureVoid                   = "structure_void"
+	SugarCane                       = "sugar_cane"
+	Sunflower                       = "sunflower"
+	SuspiciousGravel                = "suspicious_gravel"
+	SuspiciousSand                  = "suspicious_sand"
+	SweetBerryBush                  = "sweet_berry_bush"
+	TallGrass                       = "tall_grass"
+	Target                          = "target"
+	TintedGlass                     = "tinted_glass"
+	Tnt                             = "tnt"
+	Torch                           = "torch"
+	Torchflower                     = "torchflower"
+	TorchflowerCrop                 = "torchflower_crop"
+	TrappedChest                    = "trapped_chest"
+	Tripwire                        = "tripwire"
+	TripwireHook                    = "tripwire_hook"
+	TropicalFish                    = "tropical_fish"
+	TubeCoral                       = "tube_coral"
+	TubeCoralBlock                  = "tube_coral_block"
+	TubeCoralFan                    = "tube_coral_fan"
+	Tuff                            = "tuff"
+	TuffSlab                        = "tuff_slab"
+	TuffStairs                      = "tuff_stairs"
+	TuffWall                        = "tuff_wall"
+	TurtleEgg                       = "turtle_egg"
+	TwistingVines                   = "twisting_vines"
+	UnderwaterTorch                 = "underwater_torch"
+	Unknown                         = "unknown"
+	VerdantFroglight                = "verdant_froglight"
+	Vine                            = "vine"
+	WallBanner                      = "wall_banner"
+	WallSign                        = "wall_sign"
+	WarpedButton                    = "warped_button"
+	WarpedDoor                      = "warped_door"
+	WarpedFence                     = "warped_fence"
+	WarpedFenceGate                 = "warped_fence_gate"
+	WarpedFungus                    = "warped_fungus"
+	WarpedHangingSign               = "warped_hanging_sign"
+	WarpedHyphae                    = "warped_hyphae"
+	WarpedNylium                    = "warped_nylium"
+	WarpedPlanks                    = "warped_planks"
+	WarpedPressurePlate             = "warped_pressure_plate"
+	WarpedRoots                     = "warped_roots"
+	WarpedSign                      = "warped_sign"
+	WarpedSlab                      = "warped_slab"
+	WarpedStairs                    = "warped_stairs"
+	WarpedStem                      = "warped_stem"
+	WarpedTrapdoor                  = "warped_trapdoor"
+	WarpedWartBlock                 = "warped_wart_block"
+	Water                           = "water"
+	WaxedCopper                     = "waxed_copper"
+	WaxedCutCopper                  = "waxed_cut_copper"
+	WaxedCutCopperSlab              = "waxed_cut_copper_slab"
+	WaxedCutCopperStairs            = "waxed_cut_copper_stairs"
+	WaxedExposedCopper              = "waxed_exposed_copper"
+	WaxedExposedCutCopper           = "waxed_exposed_cut_copper"
+	WaxedExposedCutCopperSlab       = "waxed_exposed_cut_copper_slab"
+	WaxedExposedCutCopperStairs     = "waxed_exposed_cut_copper_stairs"
+	WaxedOxidizedCopper             = "waxed_oxidized_copper"
+	WaxedOxidizedCutCopper          = "waxed_oxidized_cut_copper"
+	WaxedOxidizedCutCopperSlab      = "waxed_oxidized_cut_copper_slab"
+	WaxedOxidizedCutCopperStairs    = "waxed_oxidized_cut_copper_stairs"
+	WaxedWeatheredCopper            = "waxed_weathered_copper"
+	WaxedWeatheredCutCopper         = "waxed_weathered_cut_copper"
+	WaxedWeatheredCutCopperSlab     = "waxed_weathered_cut_copper_slab"
+	WaxedWeatheredCutCopperStairs   = "waxed_weathered_cut_copper_stairs"
+	WeatheredCopper                 = "weathered_copper"
+	WeatheredCutCopper              = "weathered_cut_copper"
+	WeatheredCutCopperSlab          = "weathered_cut_copper_slab"
+	WeatheredCutCopperStairs        = "weathered_cut_copper_stairs"
+	WeepingVines                    = "weeping_vines"
+	Wheat                           = "wheat"
+	WhiteBanner                     = "white_banner"
+	WhiteBed                        = "white_bed"
+	WhiteCandle                     = "white_candle"
+	WhiteCarpet                     = "white_carpet"
+	WhiteConcrete                   = "white_concrete"
+	WhiteConcretePowder             = "white_concrete_powder"
+	WhiteGlazedTerracotta           = "white_glazed_terracotta"
+	WhiteShulkerBox                 = "white_shulker_box"
+	WhiteStainedGlass               = "white_stained_glass"
+	WhiteStainedGlassPane           = "white_stained_glass_pane"
+	WhiteTerracotta                 = "white_terracotta"
+	WhiteWool                       = "white_wool"
+	WitherRose                      = "wither_rose"
+	WitherSkeletonSkull             = "wither_skeleton_skull"
+	YellowBanner                    = "yellow_banner"
+	YellowBed                       = "yellow_bed"
+	YellowCandle                    = "yellow_candle"
+	YellowCarpet                    = "yellow_carpet"
+	YellowConcrete                  = "yellow_concrete"
+	YellowConcretePowder            = "yellow_concrete_powder"
+	YellowGlazedTerracotta          = "yellow_glazed_terracotta"
+	YellowShulkerBox                = "yellow_shulker_box"
+	YellowStainedGlass              = "yellow_stained_glass"
+	YellowStainedGlassPane          = "yellow_stained_glass_pane"
+	YellowTerracotta                = "yellow_terracotta"
+	YellowWool                      = "yellow_wool"
 )
 
-// BlockId returns the id of the block
-func BlockId(id int) int {
-	return id
+type Block struct {
+	// Name is the minecraft name of the block
+	Name string
+	// Id is the of the block
+	Id int
+}
+
+func (b Block) BlockName() string {
+	return b.Name
+}
+func (b Block) BlockId() int {
+	return b.Id
 }

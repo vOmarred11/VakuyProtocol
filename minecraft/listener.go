@@ -64,10 +64,10 @@ type ListenConfig struct {
 	// calls to `(*Conn).Write()` or `(*Conn).WritePacket()` to send the packets over network.
 	FlushRate time.Duration
 
-	// ResourcePacks is a slice of resource packs that the listener may hold. Each client will be asked to
-	// download these resource packs upon joining.
+	// ResourcePacks is a slice of resource pack that the listener may hold. Each client will be asked to
+	// download these resource pack upon joining.
 	// Use Listener.AddResourcePack() to add a resource pack and Listener.RemoveResourcePack() to remove a resource pack
-	// after having called ListenConfig.Listen(). Note that these methods will not update resource packs for active connections.
+	// after having called ListenConfig.Listen(). Note that these methods will not update resource pack for active connections.
 	ResourcePacks []*resource.Pack
 	// TexturePacksRequired specifies if clients that join must accept the texture pack in order for them to
 	// be able to join the server. If they don't accept, they can only leave the server.
@@ -179,8 +179,8 @@ func (listener *Listener) Disconnect(conn *Conn, message string) error {
 	return conn.close(conn.closeErr(message))
 }
 
-// AddResourcePack adds a new resource pack to the listener's resource packs.
-// Note: This method will not update resource packs for active connections.
+// AddResourcePack adds a new resource pack to the listener's resource pack.
+// Note: This method will not update resource pack for active connections.
 func (listener *Listener) AddResourcePack(pack *resource.Pack) {
 	listener.packsMu.Lock()
 	defer listener.packsMu.Unlock()
@@ -188,7 +188,7 @@ func (listener *Listener) AddResourcePack(pack *resource.Pack) {
 }
 
 // RemoveResourcePack removes a resource pack from the listener's configuration by its UUID.
-// Note: This method will not update resource packs for active connections.
+// Note: This method will not update resource pack for active connections.
 func (listener *Listener) RemoveResourcePack(uuid string) {
 	listener.packsMu.Lock()
 	listener.packs = slices.DeleteFunc(listener.packs, func(pack *resource.Pack) bool {
