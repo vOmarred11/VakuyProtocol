@@ -1,7 +1,5 @@
 package packs
 
-type engineMinVersion struct{ int }
+type EngineMinVersion struct{ int }
 
-func MinEngineVersion(m engineMinVersion) int {
-	return m.int
-}
+func (e EngineMinVersion) EngineMinVersion() int { return e.int }

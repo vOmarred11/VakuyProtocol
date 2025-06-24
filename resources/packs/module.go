@@ -2,24 +2,18 @@ package packs
 
 import "github.com/google/uuid"
 
-type moduleDescription struct{ string }
+type ModuleDescription struct{ string }
 
-type moduleVersion struct{ int }
+type ModuleVersion struct{ int }
 
-type moduleUUID struct{ uuid.UUID }
+type ModuleUUID struct{ uuid.UUID }
 
-type moduleType struct{ string }
+type ModuleType struct{ string }
 
-func ModuleDescription(md moduleDescription) string {
-	return md.string
-}
-func ModuleVersion(md moduleVersion) int {
-	return md.int
-}
-func ModuleUUID(md moduleUUID) uuid.UUID {
-	return md.UUID
-}
-func Type(md moduleType) string {
-	md.string = "resources"
-	return md.string
+func (m ModuleDescription) ModuleDescription() string { return m.string }
+func (m ModuleVersion) ModuleVersion() int            { return m.int }
+func (m ModuleUUID) ModuleUUID() uuid.UUID            { return m.UUID }
+func (m ModuleType) ModuleType() string {
+	m.string = "resources"
+	return m.string
 }

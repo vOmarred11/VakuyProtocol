@@ -5,8 +5,6 @@ import (
 	"go/types"
 )
 
-var resourceType resource.Pack
-
 type Resources struct {
 	Name        resource.Pack
 	Mainfest    resource.Manifest

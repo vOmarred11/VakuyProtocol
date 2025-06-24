@@ -1,7 +1,7 @@
 package packs
 
-type headerFormatVersion struct{ int }
+type HeaderFormatVersion struct{ int }
 
-func FormatVersion(h headerFormatVersion) int {
+func (h HeaderFormatVersion) HeaderFormatVersion() int {
 	return h.int
 }

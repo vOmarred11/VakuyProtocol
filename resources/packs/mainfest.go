@@ -1,32 +1,14 @@
 package packs
 
-import "github.com/google/uuid"
+type PackName struct{ string }
 
-type packName struct{ string }
+type PackDescription struct{ string }
 
-type packDescription struct{ string }
+type PackVersion struct{ int }
 
-type packAuthor struct{ string }
+type PackFormat struct{ int }
 
-type packVersion struct{ int }
-
-type packFormat struct{ int }
-
-func MainfestName(pc packName) string {
-	return pc.string
-}
-func MainfestDescription(pc packDescription) string {
-	return pc.string
-}
-func MainfestAuthor(pc packAuthor) string {
-	return pc.string
-}
-func MainfestVersion(pc packVersion) int {
-	return pc.int
-}
-func MainfestUUID() uuid.UUID {
-	return uuid.UUID{}
-}
-func MainfestFormat(pc packFormat) int {
-	return pc.int
-}
+func (p PackName) PackName() string               { return p.string }
+func (p PackDescription) PackDescription() string { return p.string }
+func (p PackVersion) PackVersion() int            { return p.int }
+func (p PackFormat) PackFormat() int              { return p.int }
