@@ -1,7 +1,7 @@
-package inv
+package inventory
 
 import (
-	"github.com/vOmarred11/VakuyProtocol/stack"
+	"github.com/vOmarred11/VakuyProtocol/item"
 )
 
 const (
@@ -13,7 +13,7 @@ const (
 // InventoryData is data of the inventory
 type InventoryData struct {
 	// Items is a slice of all items
-	Items []stack.Item
+	Items []item.Item
 	// Slots are all available slots
 	Slots int32
 	// EmptySlots are all empty slots
@@ -26,7 +26,7 @@ func (d InventoryData) NonEmptySlots() int32 {
 	v := d.EmptySlots - d.Slots
 	return v
 }
-func (d InventoryData) InventoryDataItems() []stack.Item {
+func (d InventoryData) InventoryDataItems() []item.Item {
 	return d.Items
 }
 func (d InventoryData) InventoryDataSlots() int32 {

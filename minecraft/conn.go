@@ -892,7 +892,7 @@ func (conn *Conn) handleResourcePacksInfo(pk *packet.ResourcePacksInfo) error {
 	return nil
 }
 
-// handleResourcePackStack handles a ResourcePackStack packet sent by the server. The stack defines the order
+// handleResourcePackStack handles a ResourcePackStack packet sent by the server. The item defines the order
 // that resource pack are applied in.
 func (conn *Conn) handleResourcePackStack(pk *packet.ResourcePackStack) error {
 	// We currently don't apply resource pack in any way, so instead we just check if all resource pack in
@@ -925,7 +925,7 @@ func (conn *Conn) handleResourcePackStack(pk *packet.ResourcePackStack) error {
 func (conn *Conn) hasPack(uuid string, version string, hasBehaviours bool) bool {
 	for _, exempted := range exemptedPacks {
 		if exempted.uuid == uuid && exempted.version == version {
-			// The server may send this resource pack on the stack without sending it in the info, as the client
+			// The server may send this resource pack on the item without sending it in the info, as the client
 			// always has it downloaded.
 			return true
 		}

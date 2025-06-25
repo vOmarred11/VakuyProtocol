@@ -1,4 +1,4 @@
-package stack
+package item
 
 // ItemPosition returns the position of a chosen item when is not in the inventory
 type ItemPosition struct {

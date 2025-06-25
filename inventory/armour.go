@@ -1,4 +1,4 @@
-package inv
+package inventory
 
 const (
 	ArmourHelmet = iota

@@ -1,4 +1,4 @@
-package inv
+package inventory
 
 const (
 	InventoryMaxItem  = 64
@@ -8,7 +8,7 @@ const (
 type InventoryMax struct {
 	// Quantity is the max quantity for each block
 	Quantity int32
-	// ChangeForBlock defines if the max stack should change for each block
+	// ChangeForBlock defines if the max item should change for each block
 	// For example max dirt should be 70 and max stone should be 64
 	ChangeForBlock bool
 }

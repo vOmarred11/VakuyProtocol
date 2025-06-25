@@ -1,4 +1,4 @@
-package stack
+package item
 
 import (
 	"github.com/sandertv/gophertunnel/minecraft/protocol"

@@ -1,4 +1,4 @@
-package stack
+package item
 
 type ItemHash map[string]int
 

@@ -1,8 +1,8 @@
-package inv
+package inventory
 
 // Stack is the quantity of each block
 type Stack struct {
-	// Block returns the which stack get changed
+	// Block returns the which item get changed
 	Block uint8
 	// Max returns the max of the block
 	Max int32

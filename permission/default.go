@@ -1,4 +1,4 @@
-package perm
+package permission
 
 // PermissionDefault returns the default permission level of each player
 type PermissionDefault struct {
