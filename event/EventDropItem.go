@@ -1,8 +1,8 @@
 package event
 
 import (
-	"github.com/vOmarred11/VakuyProtocol/player"
 	"github.com/vOmarred11/VakuyProtocol/item"
+	"github.com/vOmarred11/VakuyProtocol/player"
 )
 
 // DropItemEvent is when a player drops an item
