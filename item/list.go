@@ -382,3 +382,10 @@ type ItemFactory struct {
 	// Id returns the network id of the item
 	Id int
 }
+
+func (i ItemFactory) ItemFactoryName() string {
+	return i.Name
+}
+func (i ItemFactory) ItemFactoryId() int {
+	return i.Id
+}
