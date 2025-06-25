@@ -843,16 +843,17 @@ const (
 	YellowWool                      = "yellow_wool"
 )
 
-type Block struct {
+// BlockFactory returns id and name of the block
+type BlockFactory struct {
 	// Name is the minecraft name of the block
 	Name string
 	// Id is the of the block
 	Id int
 }
 
-func (b Block) BlockName() string {
+func (b BlockFactory) BlockName() string {
 	return b.Name
 }
-func (b Block) BlockId() int {
+func (b BlockFactory) BlockId() int {
 	return b.Id
 }
