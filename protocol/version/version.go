@@ -1,6 +1,7 @@
 package version
 
 import (
+	"fmt"
 	"github.com/pelletier/go-toml"
 	"github.com/vOmarred11/VakuyProtocol/protocol"
 )
@@ -21,8 +22,6 @@ type SessionData struct {
 type Client struct {
 	// ClientProtocol is the protocol from the client
 	ClientProtocol int32
-	// HostProtocol is the protocol from the proxy
-	HostProtocol int32
 	// ServerProtocol is the protocol from the server
 	ServerProtocol int32
 	// AcceptedProtocols is a slice of all accepted protocol
@@ -57,7 +56,10 @@ func (d SessionData) SessionProtocolVersion() string {
 func (d Data) SessionProtocol() int32 {
 	return d.Protocol
 }
-func (d Client) Protocols() []int32 {
-	d.AcceptedProtocols = []int32{protocol.CurrentProtocol}
-	return d.AcceptedProtocols
+func (c Client) Protocols() []int32 {
+	c.AcceptedProtocols = []int32{protocol.CurrentProtocol}
+	if c.ClientProtocol > c.ServerProtocol {
+		fmt.Errorf("client connected with an incompatible protocol")
+	}
+	return c.AcceptedProtocols
 }
