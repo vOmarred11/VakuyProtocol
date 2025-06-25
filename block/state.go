@@ -10,9 +10,12 @@ type ActionStates struct {
 	Destroy bool
 }
 
-func (s ActionStates) ActionStates() ActionStates {
-	s.Replace = false
-	s.Fill = false
-	s.Destroy = false
-	return s
+func (s ActionStates) ActionStatesReplace() bool {
+	return s.Replace
+}
+func (s ActionStates) ActionStatesFill() bool {
+	return s.Fill
+}
+func (s ActionStates) ActionStatesDestroy() bool {
+	return s.Destroy	
 }
