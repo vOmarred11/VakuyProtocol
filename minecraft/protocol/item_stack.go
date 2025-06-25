@@ -19,7 +19,7 @@ const (
 
 // ItemStackRequest represents a single request present in an ItemStackRequest packet sent by the client to
 // change an item in an inventory.
-// Item stack requests are either approved or rejected by the server using the ItemStackResponse packet.
+// Item item requests are either approved or rejected by the server using the ItemStackResponse packet.
 type ItemStackRequest struct {
 	// RequestID is a unique ID for the request. This ID is used by the server to send a response for this
 	// specific request in the ItemStackResponse packet.
@@ -231,13 +231,13 @@ func (x *ItemStackResponse) Marshal(r IO) {
 	}
 }
 
-// StackResponseContainerInfo holds information on what slots in a container have what item stack in them.
+// StackResponseContainerInfo holds information on what slots in a container have what item item in them.
 type StackResponseContainerInfo struct {
 	// Container is the FullContainerName that describes the container that the slots that follow are in. For
 	// the main inventory, the ContainerID seems to be 0x1b. Fur the cursor, this value seems to be 0x3a. For
 	// the crafting grid, this value seems to be 0x0d.
 	Container FullContainerName
-	// SlotInfo holds information on what item stack should be present in specific slots in the container.
+	// SlotInfo holds information on what item item should be present in specific slots in the container.
 	SlotInfo []StackResponseSlotInfo
 }
 
@@ -247,22 +247,22 @@ func (x *StackResponseContainerInfo) Marshal(r IO) {
 	Slice(r, &x.SlotInfo)
 }
 
-// StackResponseSlotInfo holds information on what item stack should be present in a specific slot.
+// StackResponseSlotInfo holds information on what item item should be present in a specific slot.
 type StackResponseSlotInfo struct {
 	// Slot and HotbarSlot seem to be the same value every time: The slot that was actually changed. I'm not
 	// sure if these slots ever differ.
 	Slot, HotbarSlot byte
-	// Count is the total count of the item stack. This count will be shown client-side after the response is
+	// Count is the total count of the item item. This count will be shown client-side after the response is
 	// sent to the client.
 	Count byte
-	// StackNetworkID is the network ID of the new stack at a specific slot.
+	// StackNetworkID is the network ID of the new item at a specific slot.
 	StackNetworkID int32
-	// CustomName is the custom name of the item stack. It is used in relation to text filtering.
+	// CustomName is the custom name of the item item. It is used in relation to text filtering.
 	CustomName string
 	// FilteredCustomName is a filtered version of CustomName with all the profanity removed. The client will
 	// use this over CustomName if this field is not empty and they have the "Filter Profanity" setting enabled.
 	FilteredCustomName string
-	// DurabilityCorrection is the current durability of the item stack. This durability will be shown
+	// DurabilityCorrection is the current durability of the item item. This durability will be shown
 	// client-side after the response is sent to the client.
 	DurabilityCorrection int32
 }
@@ -316,7 +316,7 @@ const (
 type transferStackRequestAction struct {
 	// Count is the count of the item in the source slot that was taken towards the destination slot.
 	Count byte
-	// Source and Destination point to the source slot from which Count of the item stack were taken and the
+	// Source and Destination point to the source slot from which Count of the item item were taken and the
 	// destination slot to which this item was moved.
 	Source, Destination StackRequestSlotInfo
 }
@@ -344,7 +344,7 @@ type PlaceStackRequestAction struct {
 // SwapStackRequestAction is sent by the client to swap the item in its cursor with an item present in another
 // container. The two item stacks swap places.
 type SwapStackRequestAction struct {
-	// Source and Destination point to the source slot from which Count of the item stack were taken and the
+	// Source and Destination point to the source slot from which Count of the item item were taken and the
 	// destination slot to which this item was moved.
 	Source, Destination StackRequestSlotInfo
 }
@@ -358,7 +358,7 @@ func (a *SwapStackRequestAction) Marshal(r IO) {
 // DropStackRequestAction is sent by the client when it drops an item out of the inventory when it has its
 // inventory opened. This action is not sent when a player drops an item out of the hotbar using the Q button
 // (or the equivalent on mobile). The InventoryTransaction packet is still used for that action, regardless of
-// whether the item stack network IDs are used or not.
+// whether the item item network IDs are used or not.
 type DropStackRequestAction struct {
 	// Count is the count of the item in the source slot that was taken towards the destination slot.
 	Count byte
@@ -450,8 +450,8 @@ type MineBlockStackRequestAction struct {
 	HotbarSlot int32
 	// PredictedDurability is the durability of the item that the client assumes to be present at the time.
 	PredictedDurability int32
-	// StackNetworkID is the unique stack ID that the client assumes to be present at the time. The server
-	// must check if these IDs match. If they do not match, servers should reject the stack request that the
+	// StackNetworkID is the unique item ID that the client assumes to be present at the time. The server
+	// must check if these IDs match. If they do not match, servers should reject the item request that the
 	// action holding this info was in.
 	StackNetworkID int32
 }
@@ -464,7 +464,7 @@ func (a *MineBlockStackRequestAction) Marshal(r IO) {
 }
 
 // CraftRecipeStackRequestAction is sent by the client the moment it begins crafting an item. This is the
-// first action sent, before the Consume and Create item stack request actions.
+// first action sent, before the Consume and Create item item request actions.
 // This action is also sent when an item is enchanted. Enchanting should be treated mostly the same way as
 // crafting, where the old item is consumed.
 type CraftRecipeStackRequestAction struct {
@@ -525,7 +525,7 @@ func (a *CraftCreativeStackRequestAction) Marshal(r IO) {
 }
 
 // CraftRecipeOptionalStackRequestAction is sent when using an anvil. When this action is sent, the
-// FilterStrings field in the respective stack request is non-empty and contains the name of the item created
+// FilterStrings field in the respective item request is non-empty and contains the name of the item created
 // using the anvil or cartography table.
 type CraftRecipeOptionalStackRequestAction struct {
 	// RecipeNetworkID is the network ID of the multi-recipe that is about to be crafted. This network ID matches
@@ -606,8 +606,8 @@ type StackRequestSlotInfo struct {
 	Container FullContainerName
 	// Slot is the index of the slot within the container with the ContainerID above.
 	Slot byte
-	// StackNetworkID is the unique stack ID that the client assumes to be present in this slot. The server
-	// must check if these IDs match. If they do not match, servers should reject the stack request that the
+	// StackNetworkID is the unique item ID that the client assumes to be present in this slot. The server
+	// must check if these IDs match. If they do not match, servers should reject the item request that the
 	// action holding this info was in.
 	StackNetworkID int32
 }

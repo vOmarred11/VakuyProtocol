@@ -479,7 +479,7 @@ func (r *Reader) StackRequestAction(x *StackRequestAction) {
 	var id uint8
 	r.Uint8(&id)
 	if !lookupStackRequestAction(id, x) {
-		r.UnknownEnumOption(id, "stack request action type")
+		r.UnknownEnumOption(id, "item request action type")
 		return
 	}
 	(*x).Marshal(r)

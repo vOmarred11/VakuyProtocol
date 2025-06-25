@@ -19,7 +19,7 @@ type ItemBehaviourConfig struct {
 	// Drag is used to reduce all axes of the velocity every tick. Velocity is
 	// multiplied with (1-Drag) every tick.
 	Drag float64
-	// ExistenceDuration specifies how long the item stack should last. The
+	// ExistenceDuration specifies how long the item item should last. The
 	// default is time.Minute * 5.
 	ExistenceDuration time.Duration
 	// PickupDelay specifies how much time must expire before the item can be
@@ -84,7 +84,7 @@ func (i *ItemBehaviour) Tick(e *Ent, tx *world.Tx) *Movement {
 				return i.passive.Tick(e, tx)
 			}
 
-			// This is only reached if part of the item stack was collected into the hopper.
+			// This is only reached if part of the item item was collected into the hopper.
 			opts := world.EntitySpawnOpts{Position: pos.Vec3Centre()}
 			tx.AddEntity(NewItem(opts, i.Item().Grow(-addedCount)))
 		}
@@ -107,7 +107,7 @@ func (i *ItemBehaviour) tick(e *Ent, tx *world.Tx) {
 
 // checkNearby checks the nearby entities for item collectors and other item
 // stacks. If a collector is found in range, the item will be picked up. If
-// another item stack with the same item type is found in range, the item
+// another item item with the same item type is found in range, the item
 // stacks will merge.
 func (i *ItemBehaviour) checkNearby(e *Ent, tx *world.Tx) {
 	pos := e.Position()
@@ -136,8 +136,8 @@ func (i *ItemBehaviour) merge(e *Ent, other *Ent, tx *world.Tx) bool {
 	pos := e.Position()
 	otherBehaviour := other.Behaviour().(*ItemBehaviour)
 	if otherBehaviour.i.Count() == otherBehaviour.i.MaxCount() || i.i.Count() == i.i.MaxCount() || !i.i.Comparable(otherBehaviour.i) {
-		// Either stack is already filled up to the maximum, meaning we can't
-		// change anything any way, other the stack types weren't comparable.
+		// Either item is already filled up to the maximum, meaning we can't
+		// change anything any way, other the item types weren't comparable.
 		return false
 	}
 	a, b := otherBehaviour.i.AddStack(i.i)
@@ -163,7 +163,7 @@ func (i *ItemBehaviour) collect(e *Ent, collector Collector, tx *world.Tx) {
 	}
 
 	if n == i.i.Count() {
-		// The collector picked up the entire stack.
+		// The collector picked up the entire item.
 		_ = e.Close()
 		return
 	}
@@ -177,9 +177,9 @@ func (i *ItemBehaviour) collect(e *Ent, collector Collector, tx *world.Tx) {
 // a player or a zombie.
 type Collector interface {
 	world.Entity
-	// Collect collects the stack passed. It is called if the Collector is standing near an item entity that
+	// Collect collects the item passed. It is called if the Collector is standing near an item entity that
 	// may be picked up.
-	// The count of items collected from the stack n is returned, along with a
+	// The count of items collected from the item n is returned, along with a
 	// bool that indicates if the Collector was in a state where it could
 	// collect any items in the first place.
 	Collect(stack item.Stack) (n int, ok bool)

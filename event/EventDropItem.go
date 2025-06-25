@@ -2,25 +2,25 @@ package event
 
 import (
 	"github.com/vOmarred11/VakuyProtocol/player"
-	"github.com/vOmarred11/VakuyProtocol/stack"
+	"github.com/vOmarred11/VakuyProtocol/item"
 )
 
 // DropItemEvent is when a player drops an item
 type DropItemEvent struct {
 	// Position is the position where the item got dropped
 	// If Position is mid-block it will the result will be unknown
-	Position stack.ItemPosition
+	Position item.ItemPosition
 	// Item is the item that got dropped
-	Item stack.Item
+	Item item.Item
 }
 type DropItemData struct {
 	Player player.Player
 }
 
-func (d DropItemEvent) DropItemEventPosition() stack.ItemPosition {
+func (d DropItemEvent) DropItemEventPosition() item.ItemPosition {
 	return d.Position
 }
-func (d DropItemEvent) DropItemEventItem() stack.Item {
+func (d DropItemEvent) DropItemEventItem() item.Item {
 	return d.Item
 }
 func (d DropItemData) DropItemEventPlayer() player.Player {

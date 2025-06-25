@@ -18,7 +18,7 @@ type ResourcePackStack struct {
 	// The order of these texture pack specifies the order that they are applied in on the client side. The
 	// first in the list will be applied first.
 	TexturePacks []protocol.StackResourcePack
-	// BaseGameVersion is the vanilla version that the client should set its resource pack stack to.
+	// BaseGameVersion is the vanilla version that the client should set its resource pack item to.
 	BaseGameVersion string
 	// Experiments holds a list of experiments that are either enabled or disabled in the world that the
 	// player spawns in.
@@ -27,7 +27,7 @@ type ResourcePackStack struct {
 	// ExperimentsPreviouslyToggled specifies if any experiments were previously toggled in this world. It is
 	// probably used for some kind of metrics.
 	ExperimentsPreviouslyToggled bool
-	// IncludeEditorPacks specifies if vanilla editor pack should be included in the resource pack stack when
+	// IncludeEditorPacks specifies if vanilla editor pack should be included in the resource pack item when
 	// connecting to an editor world.
 	IncludeEditorPacks bool
 }

@@ -8,9 +8,9 @@ import (
 	"time"
 )
 
-// NewItem creates a new item entity using the item stack passed. The item
-// entity will be positioned at the position passed. If the stack's count
-// exceeds its max count, the count of the stack will be changed to the
+// NewItem creates a new item entity using the item item passed. The item
+// entity will be positioned at the position passed. If the item's count
+// exceeds its max count, the count of the item will be changed to the
 // maximum.
 func NewItem(opts world.EntitySpawnOpts, i item.Stack) *world.EntityHandle {
 	conf := itemConf
@@ -18,8 +18,8 @@ func NewItem(opts world.EntitySpawnOpts, i item.Stack) *world.EntityHandle {
 	return opts.New(ItemType, conf)
 }
 
-// NewItemPickupDelay creates a new item entity containing item stack i. A
-// delay may be specified which defines for how long the item stack cannot be
+// NewItemPickupDelay creates a new item entity containing item item i. A
+// delay may be specified which defines for how long the item item cannot be
 // picked up from the ground.
 func NewItemPickupDelay(opts world.EntitySpawnOpts, i item.Stack, delay time.Duration) *world.EntityHandle {
 	conf := itemConf

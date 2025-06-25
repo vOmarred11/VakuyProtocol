@@ -18,7 +18,7 @@ type InventoryContent struct {
 	Container protocol.FullContainerName
 	// StorageItem is the item that is acting as the storage container for the inventory. If the inventory is
 	// not a dynamic container then this field should be left empty. When set, only the item type is used by
-	// the client and none of the other stack info.
+	// the client and none of the other item info.
 	StorageItem protocol.ItemInstance
 }
 

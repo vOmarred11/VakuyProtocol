@@ -379,7 +379,7 @@ func (w *Writer) Item(x *ItemStack) {
 func (w *Writer) StackRequestAction(x *StackRequestAction) {
 	var id byte
 	if !lookupStackRequestActionType(*x, &id) {
-		w.UnknownEnumOption(fmt.Sprintf("%T", *x), "stack request action type")
+		w.UnknownEnumOption(fmt.Sprintf("%T", *x), "item request action type")
 	}
 	w.Uint8(&id)
 	(*x).Marshal(w)

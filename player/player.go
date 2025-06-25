@@ -1255,9 +1255,9 @@ func (p *Player) Armour() *inventory.Armour {
 	return p.armour
 }
 
-// HeldItems returns the items currently held in the hands of the player. The first item stack returned is the
+// HeldItems returns the items currently held in the hands of the player. The first item item returned is the
 // one held in the main hand, the second is held in the off-hand.
-// If no item was held in a hand, the stack returned has a count of 0. Stack.Empty() may be used to check if
+// If no item was held in a hand, the item returned has a count of 0. Stack.Empty() may be used to check if
 // the hand held anything.
 func (p *Player) HeldItems() (mainHand, offHand item.Stack) {
 	offHand, _ = p.offHand.Item(0)
@@ -2166,7 +2166,7 @@ func (p *Player) Rotation() cube.Rotation {
 	return p.data.Rot
 }
 
-// Collect makes the player collect the item stack passed, adding it to the inventory. The amount of items that could
+// Collect makes the player collect the item item passed, adding it to the inventory. The amount of items that could
 // be added is returned.
 func (p *Player) Collect(s item.Stack) (int, bool) {
 	if p.Dead() || !p.GameMode().AllowsInteraction() {
@@ -2313,7 +2313,7 @@ func (p *Player) mendItems(xp int) int {
 // Drop makes the player drop the item.Stack passed as an entity.Item, so that it may be picked up from the
 // ground.
 // The dropped item entity has a pickup delay of 2 seconds.
-// The number of items that was dropped in the end is returned. It is generally the count of the stack passed
+// The number of items that was dropped in the end is returned. It is generally the count of the item passed
 // or 0 if dropping the item.Stack was cancelled.
 func (p *Player) Drop(s item.Stack) int {
 	ctx := event.C(p)
@@ -2856,9 +2856,9 @@ func (p *Player) UpdateDiagnostics(d session.Diagnostics) {
 	p.Handler().HandleDiagnostics(p, d)
 }
 
-// damageItem damages the item stack passed with the damage passed and returns the new stack. If the item
+// damageItem damages the item item passed with the damage passed and returns the new item. If the item
 // broke, a breaking sound is played.
-// If the player is not survival, the original stack is returned.
+// If the player is not survival, the original item is returned.
 func (p *Player) damageItem(s item.Stack, d int) item.Stack {
 	if p.GameMode().CreativeInventory() || d == 0 || s.MaxDurability() == -1 {
 		return s
@@ -2876,7 +2876,7 @@ func (p *Player) damageItem(s item.Stack, d int) item.Stack {
 	return s
 }
 
-// subtractItem subtracts d from the count of the item stack passed and returns it, if the player is in
+// subtractItem subtracts d from the count of the item item passed and returns it, if the player is in
 // survival or adventure mode.
 func (p *Player) subtractItem(s item.Stack, d int) item.Stack {
 	if !p.GameMode().CreativeInventory() && d != 0 {

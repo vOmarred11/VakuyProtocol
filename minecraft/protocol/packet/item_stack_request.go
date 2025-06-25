@@ -9,7 +9,7 @@ import (
 // items around or crafting. The InventoryTransaction packet is still used for actions such as placing blocks
 // and interacting with entities.
 type ItemStackRequest struct {
-	// Requests holds a list of item stack requests. These requests are all separate, but the client buffers
+	// Requests holds a list of item item requests. These requests are all separate, but the client buffers
 	// the requests, so you might find multiple unrelated requests in this packet.
 	Requests []protocol.ItemStackRequest
 }

@@ -8,24 +8,24 @@ const (
 	ItemEntryVersionNone
 )
 
-// ItemInstance represents a unique instance of an item stack. These instances carry a specific network ID
-// that is persistent for the stack.
+// ItemInstance represents a unique instance of an item item. These instances carry a specific network ID
+// that is persistent for the item.
 type ItemInstance struct {
-	// StackNetworkID is the network ID of the item stack. If the stack is empty, 0 is always written for this
+	// StackNetworkID is the network ID of the item item. If the item is empty, 0 is always written for this
 	// field. If not, the field should be set to 1 if the server authoritative inventories are disabled in the
-	// StartGame packet, or to a unique stack ID if it is enabled.
+	// StartGame packet, or to a unique item ID if it is enabled.
 	StackNetworkID int32
-	// Stack is the actual item stack of the item instance.
+	// Stack is the actual item item of the item instance.
 	Stack ItemStack
 }
 
-// ItemStack represents an item instance/stack over network. It has a network ID and a metadata value that
+// ItemStack represents an item instance/item over network. It has a network ID and a metadata value that
 // define its type.
 type ItemStack struct {
 	ItemType
 	// BlockRuntimeID ...
 	BlockRuntimeID int32
-	// Count is the count of items that the item stack holds.
+	// Count is the count of items that the item item holds.
 	Count uint16
 	// NBTData is a map that is serialised to its NBT representation when sent in a packet.
 	NBTData map[string]any

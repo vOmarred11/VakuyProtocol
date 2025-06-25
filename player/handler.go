@@ -129,14 +129,14 @@ type Handler interface {
 	// The type of the item may be checked to determine whether it was armour or a tool used. The damage to
 	// the item is passed.
 	HandleItemDamage(ctx *Context, i item.Stack, damage int)
-	// HandleItemPickup handles the player picking up an item from the ground. The item stack laying on the
+	// HandleItemPickup handles the player picking up an item from the ground. The item item laying on the
 	// ground is passed. ctx.Cancel() may be called to prevent the player from picking up the item.
 	HandleItemPickup(ctx *Context, i *item.Stack)
 	// HandleHeldSlotChange handles the player changing the slot they are currently holding.
 	HandleHeldSlotChange(ctx *Context, from, to int)
 	// HandleItemDrop handles the player dropping an item on the ground. The dropped item entity is passed.
 	// ctx.Cancel() may be called to prevent the player from dropping the entity.Item passed on the ground.
-	// e.Item() may be called to obtain the item stack dropped.
+	// e.Item() may be called to obtain the item item dropped.
 	HandleItemDrop(ctx *Context, s item.Stack)
 	// HandleTransfer handles a player being transferred to another server. ctx.Cancel() may be called to
 	// cancel the transfer.
