@@ -1,7 +1,6 @@
 package console
 
 import (
-	"fmt"
 	"github.com/vOmarred11/VakuyProtocol/chat"
 )
 
@@ -14,8 +13,8 @@ type Chat struct {
 }
 
 func (c *Chat) ChatConsoleDisplay() string {
-	ch := chat.Entity{}
-	c.ConsoleDisplay = fmt.Sprintf("[%s] %s", ch.Name, ch.Message)
+	ch := chat.Chat{}
+	ch.Display = c.ConsoleDisplay
 	return c.ConsoleDisplay
 }
 func (c *Chat) ChatCensureBadWords() bool {
