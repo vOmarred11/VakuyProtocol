@@ -5,7 +5,7 @@ import (
 	"go/types"
 )
 
-type Resources struct {
+type ResourcePack struct {
 	Name        resource.Pack
 	Mainfest    resource.Manifest
 	Header      resource.Header
@@ -16,28 +16,28 @@ type Resources struct {
 	Modules     []resource.Module
 }
 
-func Name(r Resources) (resource.Pack, string) {
+func Name(r ResourcePack) (resource.Pack, string) {
 	return r.Name, r.Header.Name
 }
 
-func Mainfest(r Resources) resource.Manifest {
+func Mainfest(r ResourcePack) resource.Manifest {
 	return r.Mainfest
 }
-func Header(r Resources) (resource.Header, string) {
+func Header(r ResourcePack) (resource.Header, string) {
 	return r.Header, r.Header.Name
 }
-func Dependecies(r Resources) []resource.Dependency {
+func Dependecies(r ResourcePack) []resource.Dependency {
 	return r.Dependecies
 }
-func Capability(r Resources) (resource.Capability, types.Array) {
+func Capability(r ResourcePack) (resource.Capability, types.Array) {
 	return r.Capability, types.Array{}
 }
-func MetaData(r Resources) (resource.Metadata, Resources) {
-	return r.MetaData, Resources{}
+func MetaData(r ResourcePack) (resource.Metadata, ResourcePack) {
+	return r.MetaData, ResourcePack{}
 }
-func Module(r Resources) resource.Module {
+func Module(r ResourcePack) resource.Module {
 	return r.Module
 }
-func Modules(r Resources) ([]resource.Module, types.Array) {
+func Modules(r ResourcePack) ([]resource.Module, types.Array) {
 	return r.Modules, types.Array{}
 }
