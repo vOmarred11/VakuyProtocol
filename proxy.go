@@ -34,7 +34,7 @@ func proxy() {
 
 }
 func ProxyConnection(dialer minecraft.Dialer, cfg ProxyConfig, listener *minecraft.Listener, p vakuy.Proto, t timeout.Time) {
-	conn, err := dialer.DialTimeout("raknet", cfg.Connection.RemoteAddress, t.Stamp)
+	conn, err := dialer.DialTimeout("raknet", cfg.Connection.RemoteAddress, timeout.Time{}.Sleep)
 	if err != nil {
 		panic(err)
 	}
