@@ -16,7 +16,7 @@ type Particle struct {
 	// Intensity is the release intensity
 	Intensity int32
 	// Position is the floating entity position
-	Position pos.Entity
+	Position pos.EntityPosition
 }
 
 func (p Particle) ParticleCause() uint8 {
@@ -25,6 +25,6 @@ func (p Particle) ParticleCause() uint8 {
 func (p Particle) ParticleIntensity() int32 {
 	return p.Intensity
 }
-func (p Particle) ParticlePosition() pos.Entity {
+func (p Particle) ParticlePosition() pos.EntityPosition {
 	return p.Position
 }

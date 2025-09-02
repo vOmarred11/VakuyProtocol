@@ -12,7 +12,7 @@ type Type struct {
 	// TODO do i need to explain
 	Entity world.Entity
 	// Position is the position of the entity
-	Position *pos.Entity
+	Position *pos.EntityPosition
 }
 
 func (t Type) TypeBehaviour() byte {
@@ -21,3 +21,4 @@ func (t Type) TypeBehaviour() byte {
 func (t Type) TypeEntity() world.Entity {
 	return t.Entity
 }
+func (t Type) TypePosition() *pos.EntityPosition { return t.Position }

@@ -6,7 +6,7 @@ type UnknownByte struct {
 
 func (u UnknownByte) Unknown() error {
 	if u.Type == 0 {
-		Panic("returning an invalid value: type;byte should be non-zero")
+		Panic("returning an invalid value: type byte should be non-zero")
 	}
 	return nil
 }

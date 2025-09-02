@@ -8,7 +8,7 @@ type ParticleText struct {
 	// Intensity is the release intensity
 	Intensity int32
 	// Position is the floating entity position
-	Position pos.Entity
+	Position pos.EntityPosition
 }
 
 func (p ParticleText) ParticleText() string {
@@ -17,6 +17,6 @@ func (p ParticleText) ParticleText() string {
 func (p ParticleText) ParticleTextIntensity() int32 {
 	return p.Intensity
 }
-func (p ParticleText) ParticleTextPosition() pos.Entity {
+func (p ParticleText) ParticleTextPosition() pos.EntityPosition {
 	return p.Position
 }

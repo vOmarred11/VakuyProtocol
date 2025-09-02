@@ -11,7 +11,7 @@ type Floating struct {
 	// Intensity represent the intensity of the floating entity
 	Intensity int32
 	// Position is where the floating entity is located
-	Position pos.Entity
+	Position pos.EntityPosition
 }
 
 func (f Floating) FloatingType() byte {
@@ -20,6 +20,6 @@ func (f Floating) FloatingType() byte {
 func (f Floating) FloatingIntensity() int32 {
 	return f.Intensity
 }
-func (f Floating) FloatingPosition() pos.Entity {
+func (f Floating) FloatingPosition() pos.EntityPosition {
 	return f.Position
 }

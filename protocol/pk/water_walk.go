@@ -5,6 +5,7 @@ import (
 )
 
 // WaterWalk is when a player walks on water
+// used for anticheats
 type WaterWalk struct {
 	// Speed is the walking speed
 	Speed float32

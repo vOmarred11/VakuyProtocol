@@ -2,7 +2,7 @@ package properties
 
 import "github.com/df-mc/dragonfly/server/world"
 
-func getWorld(worlds *world.World) string {
+func World(worlds *world.World) string {
 	return worlds.Name()
 }
 func MultiWorld() uint {

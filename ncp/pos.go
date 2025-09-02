@@ -13,7 +13,7 @@ func (p Position) NcpSpawnPosition() float32 {
 	return p.SpawnPosition
 }
 func (p Position) NcpPosition() []float32 {
-	if len(p.Position) == 3 {
+	if len(p.Position) > 3 {
 		panic("too many arguments, shouldn't reach 3 (X-Y-Z)")
 	}
 	return p.Position

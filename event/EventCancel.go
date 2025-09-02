@@ -1,16 +1,19 @@
 package event
 
+// Cancel cancel certain events
 type Cancel struct {
-	Event          Event
-	IsCancellabile bool
+	// Event is the chosen event
+	Event Event
+	// IsCancellable defines if the event can be cancelled
+	IsCancellable bool
 }
 
 func (c Cancel) CancelEvent() Event {
 	return c.Event
 }
 func (c Cancel) CancelIsCancellabile() bool {
-	if c.IsCancellabile == false {
+	if c.IsCancellable == false {
 		panic("you cannot cancel this event")
 	}
-	return c.IsCancellabile
+	return c.IsCancellable
 }
