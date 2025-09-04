@@ -6,4 +6,6 @@
 // The minecraft package provides a high level abstraction over Minecraft network related features. It handles
 // the authentication, encryption and spawning sequence by itself and users can send and read packets
 // implemented in the minecraft/protocol/packet package.
+
+// VAKUY: this is NOT a modified part of ghopertunnel
 package minecraft
