@@ -12,5 +12,7 @@ func (o Objective) ObjectiveType() byte {
 	return o.Type
 }
 func (o Objective) ObjectivePosition() float32 {
+	x := BlockPos{}.X()
+	o.Position = float32(x) + 1
 	return o.Position
 }
