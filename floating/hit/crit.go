@@ -6,12 +6,12 @@ import "github.com/vOmarred11/VakuyProtocol/pos"
 type ParticleCriticalHit struct {
 	// Count is the number count of floating entities
 	// Since this packet cannot be or rarely gets sent we are not calculating the intensity but the number
-	Count int32
+	Count int64
 	// Position the position of each floating entity
 	Position pos.EntityPosition
 }
 
-func (p ParticleCriticalHit) ParticleCriticalHitCount() int32 {
+func (p ParticleCriticalHit) ParticleCriticalHitCount() int64 {
 	return p.Count
 }
 func (p ParticleCriticalHit) ParticleCriticalHitPosition() pos.EntityPosition {
